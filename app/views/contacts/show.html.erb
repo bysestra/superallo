@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to contacts_path, class: 'btn btn-default' do %>
+    All Contacts
+  <% end %>
+  <%= link_to edit_contact_path(@contact), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show contact</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>First name:</dt>
+  <dd><%= @contact.first_name %></dd>
+
+  <dt>Last name:</dt>
+  <dd><%= @contact.last_name %></dd>
+
+  <dt>Title:</dt>
+  <dd><%= @contact.title %></dd>
+
+  <dt>Company name:</dt>
+  <dd><%= @contact.company_name %></dd>
+
+  <dt>Phone number:</dt>
+  <dd><%= @contact.phone_number %></dd>
+
+  <dt>Email address:</dt>
+  <dd><%= @contact.email_address %></dd>
+
+  <dt>Account:</dt>
+  <dd><%= @contact.account %></dd>
+
+</dl>
