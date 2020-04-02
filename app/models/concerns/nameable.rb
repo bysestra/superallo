@@ -1,4 +1,4 @@
-module User::Nameable
+module Nameable
   extend ActiveSupport::Concern
 
   included do

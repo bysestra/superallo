@@ -14,7 +14,7 @@ module Superallo
       Administrate::ApplicationController.helper Superallo::Application.helpers
     end
     config.active_job.queue_adapter = :sidekiq
-    config.application_name = Rails.application.class.module_parent_name
+    config.application_name = 'Allowee'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 

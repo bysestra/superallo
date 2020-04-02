@@ -1,3 +1,8 @@
+<div class="mb-4" data-controller="twilio" data-twilio-capability-url="<%= twilio_capability_url %>">
+  <%= text_field_tag :phone_number, @contact.phone_number, data: { target: 'twilio.phoneNumber' } %>
+  <button class="btn btn-sm btn-primary" data-action="twilio#performCall">Call <%= @contact.name.first %></button>
+</div>
+
 <div class="page-header">
   <%= link_to contacts_path, class: 'btn btn-default' do %>
     All Contacts
@@ -29,5 +34,4 @@
 
   <dt>Account:</dt>
   <dd><%= @contact.account %></dd>
-
 </dl>

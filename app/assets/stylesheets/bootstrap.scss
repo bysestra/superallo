@@ -1,0 +1,34 @@
+// $font-size-base: 1.6rem;
+
+// $input-btn-padding-y: 0.5rem;
+// $input-btn-padding-x: 1.8rem;
+// $input-btn-padding-y-sm: 0.4rem;
+// $input-btn-padding-x-sm: 1.2rem;
+
+// $input-padding-y: 0.5rem;
+// $input-padding-x: 1rem;
+
+// $input-border-radius: 0.4rem;
+// $input-border-color: lighten(#888, 40%);
+// $input-focus-border-color: none;
+
+// $btn-border-radius: 1.5em;
+// $btn-border-radius-sm: 1.5rem;
+
+$purple: rgb(122, 0, 169);
+$primary: $purple;
+
+$table-striped-order: even;
+$table-accent-bg: lighten(#f6f6f6, 1%);
+
+@import "bootstrap/scss/bootstrap";
+
+.btn--with-icon {
+  svg {
+    margin-right: 0.3rem;
+
+    &.fa-paper-plane {
+      margin-right: 0.45rem;
+    }
+  }
+}

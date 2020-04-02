@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-  include Properties
+  include Properties, Nameable
 
   belongs_to :account
 end

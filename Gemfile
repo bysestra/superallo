@@ -71,3 +71,4 @@ gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'whenever', require: false
 
 gem 'letter_avatar' # Generating avatar images for users.
+gem 'twilio-ruby' # For voice calls and sms.

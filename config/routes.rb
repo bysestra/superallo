@@ -25,5 +25,9 @@ Rails.application.routes.draw do
     resources :custom_fields
   end
 
-  root to: 'home#index'
+  namespace :twilio do
+    resource :capability, only: :create
+  end
+
+  root to: 'contacts#index'
 end
