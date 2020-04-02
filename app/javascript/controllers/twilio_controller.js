@@ -14,21 +14,23 @@ export default class extends Controller {
     }))
 
     Device.on('ready', (device) => {
-      logger.setLevel('DEBUG')
+      logger.setLevel('debug')
+    })
+
+    Device.on('connect', (connection) => {
+      // Update UI when the call has started.
     })
   }
 
   // Actions
 
   performCall() {
-    // updateCallStatus(`Calling ${phoneNumber}…`)
-
-    console.log(`Calling ${this.phoneNumber}…`)
-    this.currentConnection = Device.connect({
-      phoneNumber: this.phoneNumber
-    })
-
-    window.connection = this.currentConnection
+    // TODO: Check for format, or disable input change.
+    if (this.phoneNumber.length) {
+      this.currentConnection = Device.connect({
+        'outgoing_call[callee_phone_number]': this.phoneNumber
+      })
+    }
   }
 
   // Private

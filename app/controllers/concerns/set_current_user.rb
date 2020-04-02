@@ -12,7 +12,7 @@ module SetCurrentUser
   end
 
   def ensure_account_request_path_prefix
-    unless request.path.include? Current.account.slug
+    unless request.path.include?(Current.account.slug)
       redirect_to after_sign_in_path_for(Current.user.class)
     end
   end

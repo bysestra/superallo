@@ -62,4 +62,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.hosts << "superallo.test"
+  config.hosts << /[a-z0-9]+\.eu\.ngrok\.io/
+  config.hosts << /[a-z0-9]+\.ngrok\.io/
 end
