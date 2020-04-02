@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ServiceDashboard < Administrate::BaseDashboard
+class CustomFieldDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,17 +8,12 @@ class ServiceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo,
-    id: Field::Number,
-    provider: Field::String,
-    uid: Field::String,
-    access_token: Field::String,
-    access_token_secret: Field::String,
-    refresh_token: Field::String,
-    expires_at: Field::DateTime,
-    auth: Field::Text,
+    id: Field::String.with_options(searchable: false),
+    label: Field::String,
+    variant: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    name: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,40 +22,29 @@ class ServiceDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  user
   id
-  provider
-  uid
+  label
+  variant
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  user
   id
-  provider
-  uid
-  access_token
-  access_token_secret
-  refresh_token
-  expires_at
-  auth
+  label
+  variant
   created_at
   updated_at
+  name
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  user
-  provider
-  uid
-  access_token
-  access_token_secret
-  refresh_token
-  expires_at
-  auth
+  label
+  variant
+  name
   ].freeze
 
   # COLLECTION_FILTERS
@@ -75,10 +59,10 @@ class ServiceDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how services are displayed
+  # Overwrite this method to customize how custom fields are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(service)
-  #   "Service ##{service.id}"
+  # def display_resource(custom_field)
+  #   "CustomField ##{custom_field.id}"
   # end
 end

@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :announcements
-    resources :notifications
-    resources :services
+    resources :custom_fields
 
     root to: 'users#index'
   end
@@ -21,6 +20,10 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  namespace :account do
+    resources :custom_fields
+  end
 
   root to: 'home#index'
 end

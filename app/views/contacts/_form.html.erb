@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <%= form.fields_for :properties, OpenStruct.new(contact.properties) do |builder| %>
+    <% Current.account.custom_fields.each do |field| %>
+      <%= render "custom_fields/#{field.variant}", field: field, form: builder %>
+    <% end %>
+  <% end %>
+
   <div class="form-group">
     <%= form.label :first_name %>
     <%= form.text_field :first_name, class: 'form-control' %>

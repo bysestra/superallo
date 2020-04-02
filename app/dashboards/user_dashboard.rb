@@ -10,7 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     notifications: Field::HasMany,
     services: Field::HasMany,
-    id: Field::Number,
+    id: Field::String,
     email: Field::String,
     password: Field::String.with_options(searchable: false),
     encrypted_password: Field::String,
@@ -31,17 +31,15 @@ class UserDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  notifications
-  services
   id
+  first_name
+  last_name
   email
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  notifications
-  services
   id
   email
   encrypted_password
@@ -60,8 +58,6 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  notifications
-  services
   email
   encrypted_password
   reset_password_token
