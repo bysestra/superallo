@@ -1,17 +1,19 @@
 import { Controller } from 'stimulus'
-import { request } from 'helpers'
+import { current, request } from 'helpers'
 import { Device, logger } from 'lib/twilio'
 
 export default class extends Controller {
   static targets = [ 'phoneNumber' ]
 
   initialize() {
-    this.getCapabilityToken().then(() => Device.setup(this.data.get('token'), {
-      codecPreferences: ['pcmu', 'opus'],
-      debug: true,
-      closeProtection: true,
-      fakeLocalDTMF: true
-    }))
+    this.getCapabilityToken().then((token) => {
+      Device.setup(token, {
+        codecPreferences: ['pcmu', 'opus'],
+        debug: true,
+        closeProtection: true,
+        fakeLocalDTMF: true
+      })
+    })
 
     Device.on('ready', (device) => {
       logger.setLevel('debug')
@@ -40,14 +42,14 @@ export default class extends Controller {
     const { signal } = this.abortController
 
     try {
-      this.data.set('token', await request.post(this.buildCapabilityURL, { signal }))
+      return await request.post(this.buildCapabilityURL, { signal })
     } catch (error) {
       if (error.name != "AbortError") throw error
     }
   }
 
   get buildCapabilityURL() {
-    const url = new URL(this.data.get('capabilityUrl'))
+    const url = new URL(current.twilio.capabilityUrl)
     url.searchParams.set("page", window.location.pathname)
     return url
   }
