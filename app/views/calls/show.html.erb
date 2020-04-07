@@ -1,0 +1,28 @@
+<%= content_for :head do %>
+  <%= tag.meta name: 'current-twilio-capability-url', content: twilio_capability_url %>
+  <%= tag.meta name: 'current-twilio-language', content: 'fr-Fr' %>
+  <%= tag.meta name: 'current-contact-id', content: @call.callee.id %>
+  <%= tag.meta name: 'current-account-id', content: Current.account.id %>
+  <%= tag.meta name: 'current-user-id', content: Current.user.id %>
+<% end %>
+
+<section class="call" data-controller="call timer" data-call-id="<%= @call.id %>" data-call-url="<%= call_url(@call, format: :js) %>">
+  <h1>Call <%= @call.callee.name.full %></h1>
+  <%= text_field_tag :phone_number, @call.to_number, data: { target: 'call.phoneNumber' } %>
+
+  <button class="btn btn--call" data-action="call#dial">
+    <i class="fas fa-phone"></i>
+  </button>
+
+  <button class="btn btn--call btn--hangup" data-action="call#hangup">
+    <i class="fas fa-phone"></i>
+  </button>
+
+  <span data-target="timer.container"></span>
+</section>
+
+<% if @call.recording_url.present? %>
+  <div>
+    <%= link_to 'Download recording', @call.recording_url, target: '_blank' %>
+  </div>
+<% end %>

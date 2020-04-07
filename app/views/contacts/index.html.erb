@@ -19,13 +19,9 @@
       <tr>
     
 
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Title</th>
-            <th>Company name</th>
+            <th>Name</th>
             <th>Phone number</th>
             <th>Email address</th>
-            <th>Account</th>
             
           <th></th>
         
@@ -37,16 +33,15 @@
         <%= content_tag :tr, id: dom_id(contact), class: dom_class(contact) do %>
           
 
-                      <td><%= contact.first_name %></td>
-                      <td><%= contact.last_name %></td>
-                      <td><%= contact.title %></td>
-                      <td><%= contact.company_name %></td>
+                      <td><%= contact.name.full %></td>
                       <td><%= contact.phone_number %></td>
                       <td><%= contact.email_address %></td>
-                      <td><%= contact.account %></td>
           
           
-            <td><%= link_to 'Show', contact %></td>
+            <td>
+              <%= link_to 'Show', contact %>
+              <%= link_to 'Call', contact_calls_path(contact), method: :post, remote: :true %>
+            </td>
           
         <% end %>
       <% end %>

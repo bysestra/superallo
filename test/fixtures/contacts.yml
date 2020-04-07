@@ -7,7 +7,7 @@ one:
   company_name: MyString
   phone_number: MyString
   email_address: MyString
-  account: one
+  account: acme
 
 two:
   first_name: MyString
@@ -16,4 +16,4 @@ two:
   company_name: MyString
   phone_number: MyString
   email_address: MyString
-  account: two
+  account: acme

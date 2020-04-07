@@ -1,6 +1,6 @@
 class Current < ActiveSupport::CurrentAttributes
   attribute :account, :user
-  attribute :request_id, :user_agent, :ip_address
+  attribute :request_id, :user_agent, :ip_address, :twilio
 
   resets { Time.zone = nil }
 

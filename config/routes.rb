@@ -19,7 +19,15 @@ Rails.application.routes.draw do
   resources :announcements, only: [:index]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resources :contacts
+  concern :recordable do |options|
+    resource :recording, only: :create, module: options[:module]
+  end
+
+  resources :contacts do
+    resources :calls, except: %i[new edit destroy], shallow: true do
+      concerns :recordable, module: :call
+    end
+  end
 
   namespace :account do
     resources :custom_fields
@@ -27,9 +35,13 @@ Rails.application.routes.draw do
 
   namespace :twilio do
     resource :capability, only: :create
+    
+    resources :calls, only: [] do
+      resources :events, only: :create
+    end
 
     namespace :outgoing do
-      resource :call, only: :create
+      resource :call, only: %i[ create ]
     end
   end
 

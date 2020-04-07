@@ -64,4 +64,6 @@ Rails.application.configure do
   config.hosts << "superallo.test"
   config.hosts << /[a-z0-9]+\.eu\.ngrok\.io/
   config.hosts << /[a-z0-9]+\.ngrok\.io/
+
+  config.web_console.whitelisted_ips = '3.86.115.93'
 end

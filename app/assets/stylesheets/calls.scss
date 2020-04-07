@@ -1,0 +1,25 @@
+:root {
+  --color-green: var(--green);
+  --color-red: var(--red);
+}
+
+.btn {
+  &--call {
+    background: var(--color-green);
+    color: white;
+    
+    &:hover, &:focus {
+      color: white;
+    }
+  }
+
+  &--hangup {
+    background: var(--color-red);
+    color: white;
+    
+    path {
+      transform: rotate(-133deg);
+      transform-origin: center;
+    }
+  }
+}
