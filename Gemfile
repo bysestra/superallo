@@ -69,7 +69,6 @@ gem 'omniauth-twitter', '~> 1.4'
 gem 'sidekiq', '~> 6.0', '>= 6.0.3'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'whenever', require: false
-gem 'sprockets-rails', '2.3.3'
 
 gem 'letter_avatar' # Generating avatar images for users.
 gem 'twilio-ruby' # For voice calls and sms.
