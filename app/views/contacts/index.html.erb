@@ -1,15 +1,18 @@
-
-
-
 <div class="row">
   <div class="col-sm-6">
-    <h1>Contacts</h1>
+    <h1><%= contacts_index_heading(params) %></h1>
   </div>
 
   <div class="col-sm-6 text-right">
   <%= link_to new_contact_path, class: 'btn btn-primary' do %>
     Add New Contact
   <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-4 mt-4 contacts__search">
+    <%= render 'search' %>
   </div>
 </div>
 
@@ -40,11 +43,12 @@
           
             <td>
               <%= link_to 'Show', contact %>
-              <%= link_to 'Call', contact_calls_path(contact), method: :post, remote: :true %>
             </td>
           
         <% end %>
       <% end %>
     </tbody>
   </table>
+
+  <%= render 'pagination' %>
 </div>

@@ -1,16 +1,15 @@
-<div class="mb-4" data-controller="twilio">
-  <%= text_field_tag :phone_number, @contact.phone_number, data: { target: 'twilio.phoneNumber' } %>
-  <button class="btn btn-sm btn-primary" data-action="twilio#performCall">Call <%= @contact.name.first %></button>
-</div>
-
 <div class="page-header">
-  <%= link_to contacts_path, class: 'btn btn-default' do %>
+  <%= link_to contacts_path, class: 'btn btn-warning' do %>
     All Contacts
   <% end %>
+
   <%= link_to edit_contact_path(@contact), class: 'btn btn-primary' do %>
     Edit
   <% end %>
-  <h1>Show contact</h1>
+
+  <%= link_to 'Call', contact_calls_path(@contact), class: 'btn btn-primary', method: :post, remote: :true %>
+
+  <h1><%= @contact.name.full %></h1>
 </div>
 
 <dl class="dl-horizontal">

@@ -5,9 +5,10 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "./bootstrap";
-@import "jumpstart/sticky-footer";
-@import "jumpstart/announcements";
+@import "layout";
+@import "announcements";
 @import "calls";
+@import "contacts";
 
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {

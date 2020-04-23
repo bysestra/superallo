@@ -1,10 +1,11 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contacts, only: :index
 
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @pagy = Pagy.new_from_searchkick(@contacts)
   end
 
   # GET /contacts/1
@@ -65,6 +66,10 @@ class ContactsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def set_contacts
+      @contacts = Current.account.contacts.search(params[:q].presence || '*')
     end
 
     # Only allow a list of trusted parameters through.
