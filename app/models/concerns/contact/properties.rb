@@ -4,4 +4,8 @@ module Contact::Properties
   included do
     store :properties
   end
+
+  def custom_fields
+    CustomField.where("name IN (?)", properties.keys)
+  end
 end

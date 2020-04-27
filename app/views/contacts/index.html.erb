@@ -1,18 +1,18 @@
 <div class="row">
-  <div class="col-sm-6">
-    <h1><%= contacts_index_heading(params) %></h1>
-  </div>
-
-  <div class="col-sm-6 text-right">
-  <%= link_to new_contact_path, class: 'btn btn-primary' do %>
-    Add New Contact
-  <% end %>
+  <div class="col-sm-12">
+    <h2><%= contacts_index_heading(params) %></h2>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-4 mt-4 contacts__search">
+<div class="row mt-4 mb-2">
+  <div class="col-sm-12 col-md-4 contacts__search">
     <%= render 'search' %>
+  </div>
+
+  <div class="col-sm-12 col-md-8 text-right">
+    <%= link_to new_contact_path, class: 'btn btn-primary' do %>
+      Add New Contact
+    <% end %>
   </div>
 </div>
 
@@ -20,31 +20,22 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-    
-
-            <th>Name</th>
-            <th>Phone number</th>
-            <th>Email address</th>
-            
-          <th></th>
-        
+        <th>Name</th>
+        <th>Phone number</th>
+        <th>Email address</th>
+        <th>Last call</th>
+        <th></th>
       </tr>
     </thead>
 
     <tbody>
       <% @contacts.each do |contact| %>
         <%= content_tag :tr, id: dom_id(contact), class: dom_class(contact) do %>
-          
-
-                      <td><%= contact.name.full %></td>
-                      <td><%= contact.phone_number %></td>
-                      <td><%= contact.email_address %></td>
-          
-          
-            <td>
-              <%= link_to 'Show', contact %>
-            </td>
-          
+          <td><%= render_person_name contact, skip_title: false %></td>
+          <td><%= contact.phone_number %></td>
+          <td><%= contact.email_address %></td>
+          <td><%= last_contact_call_date contact %></td>
+          <td><%= link_to 'Show', contact %></td>
         <% end %>
       <% end %>
     </tbody>

@@ -1,6 +1,13 @@
-// Place all the styles related to the contacts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.person-name.avatarable {
+  position: relative;
 
-.contacts__search {
+  .circle {
+    width: 1.5em;
+  }
+}
+
+td > .person-name {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0;
 }

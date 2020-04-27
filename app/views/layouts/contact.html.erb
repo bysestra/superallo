@@ -1,0 +1,38 @@
+<% content_for :content do %>
+  <div class="row mb-4">
+    <div class="col-sm-12 col-md-8">
+      <%= render_person_name @contact %>
+    </div>
+
+    <div class="col-sm-12 col-md-4 mt-3 mt-md-1 text-md-right">
+      <%= link_to 'All Contacts', contacts_path, class: 'btn btn-warning'%>
+      <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-primary' %>
+      <%= link_to 'Call', contact_calls_path(@contact), class: 'btn btn-primary', method: :post, remote: :true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <dl class="dl-horizontal">
+        <%= term_description_tags 'First name', @contact.name.first %>
+        <%= term_description_tags 'Last name', @contact.name.last %>
+        <%= term_description_tags 'Title', @contact.title %>
+        <%= term_description_tags 'Company', @contact.company_name %>
+        <%= term_description_tags 'Phone number', @contact.phone_number %>
+        <%= term_description_tags 'Email', @contact.email_address %>
+
+        <% @contact.properties.each do |name, value| %>
+          <%= term_description_tags @contact.custom_fields.label_for(name: name), value %>
+        <% end %>
+      </dl>
+    </div>
+
+    <div class="col-sm-12 col-md-8">
+      <%= yield %>
+    </div>
+  </div>
+
+  <div class="current-call"></div>
+<% end %>
+
+<%= render template: "layouts/application" %>

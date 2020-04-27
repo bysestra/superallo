@@ -1,0 +1,8 @@
+<h2 class="d-flex align-items-center avatarable person-name">
+  <%= image_tag person.avatar_url, class: "circle mr-2" %>
+  <% if person.title.present? && !skip_title %>
+    <%= "#{person.name.full}, #{person.title}" %>
+  <% else %>
+    <%= person.name.full %>
+  <% end %>
+</h2>
