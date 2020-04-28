@@ -11,6 +11,8 @@ class Call < ApplicationRecord
   validates :from_number, :to_number, presence: :true
   before_validation :infer_to_and_from_numbers, on: :create
 
+  scope :reverse_chronologically, -> { order(created_at: :desc) }
+
   private
 
   def infer_to_and_from_numbers

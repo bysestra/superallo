@@ -1,18 +1,58 @@
-<ul class="nav nav-pills mb-3 mt-3 mt-md-0" id="pills-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="pills-calls-tab" data-toggle="pill" href="#pills-calls" role="tab" aria-controls="pills-calls" aria-selected="true">Calls</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-comments-tab" data-toggle="pill" href="#pills-comments" role="tab" aria-controls="pills-comments" aria-selected="false">Comments</a>
-  </li>
-</ul>
+<div class="row mb-5 align-items-center">
+  <div class="col-sm-12 col-md-4">
+    <%= link_to 'All Contacts', contacts_path, class: 'btn btn-warning mr-2' %>
+    <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-primary' %>
 
-<div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-calls" role="tabpanel" aria-labelledby="pills-calls-tab">
-    <h4>Calls</h4>
+    <div class="d-md-none mt-2">
+      <%= link_to 'Call', contact_calls_path(@contact), class: 'btn btn-primary mr-2', method: :post, remote: :true %>
+      <%= link_to 'Comment', '#', class: 'btn btn-primary' %>
+    </div>
   </div>
 
-  <div class="tab-pane fade" id="pills-comments" role="tabpanel" aria-labelledby="pills-comments-tab">
-    <h4>Comments</h4>
+  <div class="col-sm-12 col-md-8 mt-3 mt-md-1">
+    <div class="contact__header d-flex justify-content-between align-items-center">
+      <%= render_person_name @contact %>
+
+      <div class="d-md-block d-none">
+        <%= link_to 'Call', contact_calls_path(@contact), class: 'btn btn-primary mr-2', method: :post, remote: :true %>
+        <%= link_to 'Comment', '#', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <dl class="dl-horizontal">
+      <%= term_description_tags 'First name', @contact.name.first %>
+      <%= term_description_tags 'Last name', @contact.name.last %>
+      <%= term_description_tags 'Title', @contact.title %>
+      <%= term_description_tags 'Company', @contact.company_name %>
+      <%= term_description_tags 'Phone number', @contact.phone_number %>
+      <%= term_description_tags 'Email', @contact.email_address %>
+
+      <% @contact.properties.each do |name, value| %>
+        <%= term_description_tags @contact.custom_fields.label_for(name: name), value %>
+      <% end %>
+    </dl>
+  </div>
+
+  <div class="col-sm-12 col-md-8">
+    <div class="events">
+      <% @contact.calls.reverse_chronologically.each do |event| %>
+        <section class="contact-event">
+          <div class="contact-event__inner">
+            <div class="contact-event__meta">
+              <%= local_time_ago event.created_at %>
+              <p><%= call_to_sentence event %></p>
+            </div>
+          </div>
+
+          <div class="contact-event__actions mt-1 hidden">
+            <%= link_to 'Show', event, class: 'btn btn-sm btn-warning' %>
+          </div>
+        </section>
+      <% end %>
+    </div>
   </div>
 </div>

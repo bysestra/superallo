@@ -1,0 +1,42 @@
+.avatarable {
+  position: relative;
+
+  .circle {
+    width: 1.5em;
+  }
+}
+
+td > .person-name {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0;
+
+  h2 {
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+  }
+}
+
+.contact-event {
+  border-bottom: 1px solid rgba(0, 0, 0, .07);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  @include media-breakpoint-up(md) {
+    &:nth-of-type(2n) {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+  }
+
+  .avatarable {
+    font-size: 1rem;
+    margin: 0 0.5rem;
+  }
+
+  time {
+    font-size: 0.85em;
+  }
+}

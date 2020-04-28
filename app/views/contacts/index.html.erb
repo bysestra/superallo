@@ -24,18 +24,16 @@
         <th>Phone number</th>
         <th>Email address</th>
         <th>Last call</th>
-        <th></th>
       </tr>
     </thead>
 
     <tbody>
       <% @contacts.each do |contact| %>
         <%= content_tag :tr, id: dom_id(contact), class: dom_class(contact) do %>
-          <td><%= render_person_name contact, skip_title: false %></td>
+          <td><%= link_to render_person_name(contact, skip_title: false), contact, class: 'person-name uncolored' %></td>
           <td><%= contact.phone_number %></td>
           <td><%= contact.email_address %></td>
           <td><%= last_contact_call_date contact %></td>
-          <td><%= link_to 'Show', contact %></td>
         <% end %>
       <% end %>
     </tbody>

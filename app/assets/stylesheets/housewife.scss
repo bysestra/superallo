@@ -1,0 +1,11 @@
+.uncolored {
+  color: var(--dark);
+
+  &:hover {
+    color: var(--dark);
+  }
+}
+
+.hidden {
+  display: none !important;
+}

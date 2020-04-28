@@ -8,4 +8,10 @@ class User < ApplicationRecord
   def outgoing_call_number
     '+15136854579'
   end
+
+  concerning :Personable do
+    def title
+      nil
+    end
+  end
 end
