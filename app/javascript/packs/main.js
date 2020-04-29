@@ -6,6 +6,7 @@ require("channels")
 require("local-time").start()
 require("trix")
 require("application")
+require("bootstrap/dist/js/bootstrap")
 
 window.Rails = Rails
 

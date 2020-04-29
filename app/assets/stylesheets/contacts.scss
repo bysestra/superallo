@@ -24,13 +24,6 @@ td > .person-name {
   display: flex;
   justify-content: space-between;
 
-  @include media-breakpoint-up(md) {
-    &:nth-of-type(2n) {
-      flex-direction: row-reverse;
-      text-align: right;
-    }
-  }
-
   .avatarable {
     font-size: 1rem;
     margin: 0 0.5rem;

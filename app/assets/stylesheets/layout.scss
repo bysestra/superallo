@@ -1,3 +1,5 @@
+@import "bootstrap";
+
 .pagination {
   margin-top: 1em;
   justify-content: center;
@@ -34,4 +36,30 @@ body > .container {
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+// Fixes bootstrap nav-brand container overlap
+@include media-breakpoint-down(xs) {
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// Masquerade alert shouldn't have a bottom margin
+body > .alert {
+  margin-bottom: 0;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.contact-event {
+  @include media-breakpoint-up(md) {
+    &:nth-of-type(2n) {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+  }
 }
