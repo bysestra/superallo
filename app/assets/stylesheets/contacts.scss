@@ -33,3 +33,33 @@ td > .person-name {
     font-size: 0.85em;
   }
 }
+
+body:not(.calling) {
+  .show--calling {
+    @extend .hidden !optional;
+  }
+}
+
+body.calling {
+  .hide--calling {
+    @extend .hidden !optional;
+  }
+
+  .btn-disabled--calling {
+    & > .btn {
+      @extend .disabled !optional;
+    }
+  }
+
+  .show--calling {
+    display: flex;
+  }
+
+  .contact__header {
+    .avatarable > img {
+      animation: alertPulse 1.5s ease-out;
+      animation-iteration-count: infinite;
+      opacity: 1; 
+    }
+  }
+}

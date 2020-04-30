@@ -1,10 +1,23 @@
+<%= content_for :head do %>
+  <%= tag.meta name: 'current-twilio-capability-url', content: twilio_capability_url %>
+  <%= tag.meta name: 'current-twilio-language', content: 'fr-Fr' %>
+  <%= tag.meta name: 'current-contact-id', content: @contact.id %>
+  <%= tag.meta name: 'current-account-id', content: Current.account.id %>
+  <%= tag.meta name: 'current-user-id', content: Current.user.id %>
+<% end %>
+
 <div class="row mb-5 align-items-center">
-  <div class="col-sm-12 col-md-4">
+  <div class="col-sm-12 col-md-4 btn-disabled--calling">
     <%= link_to 'All Contacts', contacts_path, class: 'btn btn-warning mr-2' %>
     <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-primary' %>
 
-    <div class="d-md-none mt-2">
-      <%= link_to 'Call', contact_calls_path(@contact), class: 'btn btn-primary mr-2', method: :post, remote: :true %>
+    <div class="d-md-none mt-2 hide--calling">
+      <% if @contact.phone_number.present? %>
+        <%= link_to contact_calls_path(@contact), class: 'btn btn--call mr-2', method: :post, remote: :true do %>
+          <i class="fas fa-phone"></i> Call
+        <% end %>
+      <% end %>
+
       <%= link_to 'Comment', '#', class: 'btn btn-primary' %>
     </div>
   </div>
@@ -13,10 +26,17 @@
     <div class="contact__header d-flex justify-content-between align-items-center">
       <%= render_person_name @contact %>
 
-      <div class="d-md-block d-none">
-        <%= link_to 'Call', contact_calls_path(@contact), class: 'btn btn-primary mr-2', method: :post, remote: :true %>
+      <div class="d-md-block d-none hide--calling">
+        <% if @contact.phone_number.present? %>
+          <%= link_to contact_calls_path(@contact), class: 'btn btn--call mr-2', method: :post, remote: :true do %>
+            <i class="fas fa-phone"></i> Call
+          <% end %>
+        <% end %>
+
         <%= link_to 'Comment', '#', class: 'btn btn-primary' %>
       </div>
+
+      <div class="d-md-block show--calling"></div>
     </div>
   </div>
 </div>
@@ -38,6 +58,12 @@
   </div>
 
   <div class="col-sm-12 col-md-8">
+    <%= form_with model: @contact.calls.new, url: '', class: 'mb-5 hidden' do |f| %>
+      <div class="field">
+        <%= f.rich_text_area :content, placeholder: 'Take your notes during the call…' %>
+      </div>
+    <% end %>
+
     <div class="events">
       <% @contact.calls.reverse_chronologically.each do |event| %>
         <section class="contact-event">

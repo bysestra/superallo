@@ -1,10 +1,15 @@
 import { current, request } from 'helpers'
 import { Device } from 'lib/twilio'
+import Turbolinks from 'turbolinks'
 
 export default class extends ApplicationController {
   static targets = [ 'phoneNumber' ]
 
   initialize() {
+    Device.on('ready', (device) => { this.classList.add('call--ready') })
+    Device.on('connect', this.startCall.bind(this))
+    Device.on('disconnect', this.endCall.bind(this))
+
     this.getCapabilityToken().then((token) => {
       Device.setup(token, {
         codecPreferences: ['pcmu', 'opus'],
@@ -12,11 +17,9 @@ export default class extends ApplicationController {
         closeProtection: true,
         fakeLocalDTMF: true
       })
+    }).then(() => {
+      this.dial()
     })
-
-    Device.on('ready', (device) => { this.classList.add('call--ready') })
-    Device.on('connect', this.startCall.bind(this))
-    Device.on('disconnect', this.endCall.bind(this))
   }
 
   // Actions
@@ -71,7 +74,6 @@ export default class extends ApplicationController {
     return this.phoneNumberTarget.value
   }
 
-
   startCall() {
     this.dispatch('start-timer')
     this.classList.add('call--started')
@@ -84,6 +86,8 @@ export default class extends ApplicationController {
       if (this.classList.contains('call--started')) {
         this.classList.remove('call--started')
       }
+    }).then(() => {
+      Turbolinks.visit(window.location.href)
     })
   }
 }

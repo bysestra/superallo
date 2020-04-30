@@ -4,8 +4,13 @@
 }
 
 .btn {
+  & > svg {
+    margin-right: 0.35rem;
+    position: relative;
+  }
+
   &--call {
-    background: var(--color-green);
+    @extend .btn-success !optional;
     color: white;
     
     &:hover, &:focus {
@@ -14,12 +19,35 @@
   }
 
   &--hangup {
+    @extend .btn-danger !optional;
+
     background: var(--color-red);
     color: white;
+
+    svg {
+      top: 0.1rem;
+    }
     
     path {
       transform: rotate(-133deg);
       transform-origin: center;
     }
+  }
+}
+
+.call {
+  border: 3px solid var(--warning);
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+
+  &--started {
+    border-color: var(--primary);
+  }
+
+  .timer {
+    margin-right: 0.6rem;
+    position: relative;
+    font-size: 1.1em;
+    top: 0.2rem;
   }
 }

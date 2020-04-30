@@ -4,11 +4,15 @@ class CallsController < ApplicationController
   before_action :set_call, only: %i[show update]
   skip_before_action :set_contact, only: %i[show update]
 
-  layout 'contact'
+  # layout 'contact'
 
   def create
     @call = @contact.calls.create!(creator: Current.user)
-    redirect_to call_url(@call)
+    
+    respond_to do |format|
+      format.html { redirect_to call_url(@call) }
+      format.js
+    end
   end
 
   def show
