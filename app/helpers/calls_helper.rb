@@ -6,8 +6,8 @@ module CallsHelper
 
   def event_to_sentence(event)
     string = case event
-      when Call then "#{event.creator.name.familiar} #{link_to("called #{event.callee.name.full}", event)}"
-      when Comment then "#{event.creator.name.familiar} #{link_to("commented about #{event.commentable.name.full}", event)}"
+      when Call then "#{event.creator.name.familiar} <strong>called</strong> #{event.callee.name.full}"
+      when Comment then "#{event.creator.name.familiar} <strong>commented</strong> about #{event.commentable.name.full}"
       else ''
     end
 

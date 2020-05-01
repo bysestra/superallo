@@ -55,11 +55,11 @@ body > .alert {
   border-radius: 50%;
 }
 
-.contact-event {
-  @include media-breakpoint-up(md) {
-    &:nth-of-type(2n) {
-      flex-direction: row-reverse;
-      text-align: right;
-    }
-  }
-}
+// .contact-event {
+//   @include media-breakpoint-up(md) {
+//     &:nth-of-type(2n) {
+//       flex-direction: row-reverse;
+//       text-align: right;
+//     }
+//   }
+// }

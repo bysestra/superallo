@@ -7,4 +7,6 @@ class Comment < ApplicationRecord
   scope :reverse_chronologically, -> { order(created_at: :desc) }
 
   has_rich_text :content
+
+  validates :content, presence: true
 end

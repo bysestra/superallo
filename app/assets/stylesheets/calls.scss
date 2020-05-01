@@ -7,6 +7,10 @@
   & > svg {
     margin-right: 0.35rem;
     position: relative;
+
+    &.fa-search {
+      margin: 0;
+    }
   }
 
   &--call {

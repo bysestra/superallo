@@ -19,10 +19,33 @@ td > .person-name {
 }
 
 .contact-event {
-  border-bottom: 1px solid rgba(0, 0, 0, .07);
-  margin-bottom: 1rem;
+  padding: 1.2em 1.2em 0.2em 1.4em;
+  background: #faf8f7;
+  border-radius: 1rem;
+  margin-bottom: 1.8rem;
   display: flex;
   justify-content: space-between;
+
+  &__avatar {
+    width: 2.3rem;
+    left: -2rem;
+    position: absolute;
+    left: -2.4rem;
+    border: 3px solid white;
+    top: -0.4rem;
+  }
+
+  &__inner {
+    width: 100%;
+    position: relative;
+  }
+
+  &__meta {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
 
   &:last-of-type {
     border-bottom: none;
@@ -35,6 +58,7 @@ td > .person-name {
 
   time {
     font-size: 0.85em;
+    color: var(--gray);
   }
 }
 

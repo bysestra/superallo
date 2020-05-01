@@ -11,6 +11,16 @@ class Call < ApplicationRecord
 
   scope :reverse_chronologically, -> { order(created_at: :desc) }
 
+  concerning :Eventable do
+    def content
+      ApplicationController.render(partial: 'calls/content', locals: { call: self })
+    end
+  end
+
+  def duration_in_seconds
+    super.presence || 0
+  end
+
   private
 
   def infer_to_and_from_numbers

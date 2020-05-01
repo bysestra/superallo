@@ -67,10 +67,12 @@
       </div>
     <% end %>
 
-    <div class="events">
+    <div class="events pl-2">
       <% @contact.events.each do |event| %>
         <section class="contact-event">
-          <div class="contact-event__inner">
+          <div class="contact-event__inner pl-1">
+            <%= image_tag event.creator.avatar_url, class: "circle mr-2 contact-event__avatar" %>
+
             <div class="contact-event__meta">
               <%= local_time_ago event.created_at %>
               <p><%= event_to_sentence event %></p>
