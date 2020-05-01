@@ -1,5 +1,5 @@
 class CustomField < ApplicationRecord
-  belongs_to :account, default: -> { Current.account }
+  include Accountable
 
   validates :label, :variant, presence: true
 

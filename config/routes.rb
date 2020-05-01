@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :comments
+
   namespace :account do
     resources :custom_fields
   end

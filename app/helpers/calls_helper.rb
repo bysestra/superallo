@@ -4,7 +4,13 @@ module CallsHelper
     call.presence ? call.created_at.to_date.to_s(:long) : blank
   end
 
-  def call_to_sentence(call)
-    "#{call.creator.name.familiar} #{link_to("called #{call.callee.name.full}", call)}".html_safe
+  def event_to_sentence(event)
+    string = case event
+      when Call then "#{event.creator.name.familiar} #{link_to("called #{event.callee.name.full}", event)}"
+      when Comment then "#{event.creator.name.familiar} #{link_to("commented about #{event.commentable.name.full}", event)}"
+      else ''
+    end
+
+    string.html_safe
   end
 end

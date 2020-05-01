@@ -87,7 +87,7 @@ export default class extends ApplicationController {
         this.classList.remove('call--started')
       }
     }).then(() => {
-      Turbolinks.visit(window.location.href)
+      document.body.classList.remove('calling')
     })
   }
 }

@@ -24,6 +24,10 @@ td > .person-name {
   display: flex;
   justify-content: space-between;
 
+  &:last-of-type {
+    border-bottom: none;
+  }
+
   .avatarable {
     font-size: 1rem;
     margin: 0 0.5rem;
@@ -60,6 +64,10 @@ body.calling {
       animation: alertPulse 1.5s ease-out;
       animation-iteration-count: infinite;
       opacity: 1; 
+    }
+
+    h2 {
+      margin: 0;
     }
   }
 }

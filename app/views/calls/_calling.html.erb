@@ -1,7 +1,7 @@
 <section class="call" data-controller="call timer" data-call-id="<%= @call.id %>" data-call-url="<%= call_url(@call, format: :js) %>">
   <%= hidden_field_tag :phone_number, @call.to_number, data: { target: 'call.phoneNumber' } %>
 
-  <span class="timer" data-target="timer.container"></span>
+  <span class="timer" data-target="timer.container">00:00:00</span>
 
   <button class="btn btn--call btn--hangup" data-action="call#hangup">
     <i class="fas fa-phone"></i> Hangup

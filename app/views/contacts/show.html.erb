@@ -8,7 +8,7 @@
 
 <div class="row mb-5 align-items-center">
   <div class="col-sm-12 col-md-4 btn-disabled--calling">
-    <%= link_to 'All Contacts', contacts_path, class: 'btn btn-warning mr-2' %>
+    <%= link_to 'All Contacts', contacts_path, class: 'btn btn-primary mr-2' %>
     <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-primary' %>
 
     <div class="d-md-none mt-2 hide--calling">
@@ -17,12 +17,10 @@
           <i class="fas fa-phone"></i> Call
         <% end %>
       <% end %>
-
-      <%= link_to 'Comment', '#', class: 'btn btn-primary' %>
     </div>
   </div>
 
-  <div class="col-sm-12 col-md-8 mt-3 mt-md-1">
+  <div class="col-sm-12 col-md-8 mt-3 mt-md-1 calling__container">
     <div class="contact__header d-flex justify-content-between align-items-center">
       <%= render_person_name @contact %>
 
@@ -32,8 +30,6 @@
             <i class="fas fa-phone"></i> Call
           <% end %>
         <% end %>
-
-        <%= link_to 'Comment', '#', class: 'btn btn-primary' %>
       </div>
 
       <div class="d-md-block show--calling"></div>
@@ -58,19 +54,32 @@
   </div>
 
   <div class="col-sm-12 col-md-8">
-    <%= form_with model: @contact.calls.new, url: '', class: 'mb-5 hidden' do |f| %>
+    <%= form_with model: @contact.comments.build(creator: Current.user), class: 'mb-5 comment-form' do |f| %>
+      <%= f.hidden_field :creator_id %>
+      <%= f.hidden_field :commentable_id %>
+
       <div class="field">
-        <%= f.rich_text_area :content, placeholder: 'Take your notes during the call…' %>
+        <%= f.rich_text_area :content, placeholder: 'Take notes during the call…' %>
+      </div>
+
+      <div class="mt-2">
+        <%= f.submit 'Save', class: 'btn btn-primary' %> your comment.
       </div>
     <% end %>
 
     <div class="events">
-      <% @contact.calls.reverse_chronologically.each do |event| %>
+      <% @contact.events.each do |event| %>
         <section class="contact-event">
           <div class="contact-event__inner">
             <div class="contact-event__meta">
               <%= local_time_ago event.created_at %>
-              <p><%= call_to_sentence event %></p>
+              <p><%= event_to_sentence event %></p>
+            </div>
+
+            <div class="contact-event__content mb-3">
+              <% if event.respond_to?(:content) %>
+                <%= event.content %>
+              <% end %>
             </div>
           </div>
 

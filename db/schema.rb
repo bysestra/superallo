@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_213755) do
+ActiveRecord::Schema.define(version: 2020_05_01_123821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -82,6 +82,17 @@ ActiveRecord::Schema.define(version: 2020_04_07_213755) do
     t.index ["account_id"], name: "index_calls_on_account_id"
     t.index ["callee_id"], name: "index_calls_on_callee_id"
     t.index ["creator_id"], name: "index_calls_on_creator_id"
+  end
+
+  create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "creator_id"
+    t.uuid "commentable_id"
+    t.uuid "account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_comments_on_account_id"
+    t.index ["commentable_id"], name: "index_comments_on_commentable_id"
+    t.index ["creator_id"], name: "index_comments_on_creator_id"
   end
 
   create_table "contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -165,6 +176,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_213755) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "calls", "accounts"
+  add_foreign_key "comments", "accounts"
   add_foreign_key "contacts", "accounts"
   add_foreign_key "custom_fields", "accounts"
   add_foreign_key "services", "users"
