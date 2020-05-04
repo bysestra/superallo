@@ -72,3 +72,14 @@ body {
   border-bottom: 1px solid rgba(0,0,0,0.1);
   opacity: 0.9;
 }
+
+audio {
+  width: 100%;
+  border-radius: 0.4rem;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}

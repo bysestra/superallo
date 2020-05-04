@@ -1,7 +1,9 @@
 <pre>Duration: <%= Time.at(call.duration_in_seconds).utc.strftime("%H:%M:%S") %></pre>
 <pre>Status: <%= call.status %></pre>
+
 <% if call.recording_url.present? %>
+  <pre>Recording:</pre>
   <div>
-    <%= link_to 'Download recording', call.recording_url, target: '_blank' %>
+    <%= audio_tag call.recording_url, controls: true %>
   </div>
 <% end %>
