@@ -95,3 +95,32 @@ body.calling {
     }
   }
 }
+
+body.contact-name--visible {
+  .contact-sidebar__name {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.contact-sidebar {
+  .btn-sm {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__name {
+    transition: all 0.2s ease;
+    opacity: 0;
+    visibility: hidden;
+    margin-top: -3.25rem;
+    border-bottom: 1px solid rgba(163, 163, 163, 0.2);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: normal;
+    }
+  }
+}

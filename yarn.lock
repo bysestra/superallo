@@ -6525,6 +6525,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+smoothscroll-polyfill@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/smoothscroll-polyfill/-/smoothscroll-polyfill-0.4.4.tgz#3a259131dc6930e6ca80003e1cb03b603b69abf8"
+  integrity sha512-TK5ZA9U5RqCwMpfoMq/l1mrH0JAR7y7KRvOBx0n2869aLxch+gT9GhN3yUfjiw+d/DiF1mKo14+hd62JyMmoBg==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
@@ -6748,6 +6753,11 @@ stdout-stream@^1.4.0:
   integrity sha512-j4emi03KXqJWcIeF8eIXkjMFN1Cmb8gUlDYGeBALLPo5qdyTfA9bOtl8m33lRoC+vFMkP3gl0WsDr6+gzxbbTA==
   dependencies:
     readable-stream "^2.0.1"
+
+stickybits@^3.7.7:
+  version "3.7.7"
+  resolved "https://registry.yarnpkg.com/stickybits/-/stickybits-3.7.7.tgz#4e644022e7e7ce924d34fbbf7eff7d2f5d8c5dd3"
+  integrity sha512-w8slCLqIESiIl8sP3v9wXNWfzrPHPOg2W6tsCfTkStrtfMoFnk0LSHpUJC7xx1yhNEKpljZJYL9T8RkZkSdqpQ==
 
 stimulus@^1.1.1:
   version "1.1.1"
