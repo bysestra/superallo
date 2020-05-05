@@ -69,7 +69,7 @@ class ContactsController < ApplicationController
     end
 
     def set_contacts
-      @contacts = Current.account.contacts.search(params[:q].presence || '*')
+      @contacts = Contact.search(params[:q].presence || '*', where: { account_id: Current.account.id })
     end
 
     # Only allow a list of trusted parameters through.
