@@ -33,7 +33,7 @@
 
       <div class="d-md-block d-none hide--calling">
         <% if @contact.phone_number.present? %>
-          <%= link_to contact_calls_path(@contact), class: 'btn btn--call mr-2', method: :post, remote: :true do %>
+          <%= link_to contact_calls_path(@contact), class: 'btn btn--call mr-2', title: "#{Current.user.outgoing_call_number} is your Caller ID", method: :post, remote: :true do %>
             <i class="fas fa-phone"></i> Call
           <% end %>
         <% end %>
