@@ -11,6 +11,7 @@ class CustomFieldDashboard < Administrate::BaseDashboard
     id: Field::String.with_options(searchable: false),
     label: Field::String,
     variant: Field::String,
+    choices: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     name: Field::String,
@@ -25,6 +26,7 @@ class CustomFieldDashboard < Administrate::BaseDashboard
   id
   label
   variant
+  choices
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -33,6 +35,7 @@ class CustomFieldDashboard < Administrate::BaseDashboard
   id
   label
   variant
+  choices
   created_at
   updated_at
   name
@@ -44,6 +47,7 @@ class CustomFieldDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   label
   variant
+  choices
   name
   ].freeze
 

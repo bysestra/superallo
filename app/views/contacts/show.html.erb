@@ -61,7 +61,7 @@
         <%= term_description_tags 'Email', @contact.email_address %>
 
         <% @contact.properties.each do |name, value| %>
-          <%= term_description_tags @contact.custom_fields.label_for(name: name), value %>
+          <%= term_description_tags @contact.custom_fields.label_for(name: name), value.humanize %>
         <% end %>
       </div>
     </dl>

@@ -1,0 +1,4 @@
+<div class="form-group">
+  <%= form.label field.label.humanize %>
+  <%= form.select field.name, field.choices.split(',').map { |value| [value.humanize, value] }, { include_blank: true }, class: 'custom-select' %>
+</div>

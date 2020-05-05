@@ -21,3 +21,9 @@
 .circle {
   border-radius: 50%;
 }
+
+@supports (-moz-appearance: none) {
+  select {
+    -moz-appearance: none !important;
+  }
+}
