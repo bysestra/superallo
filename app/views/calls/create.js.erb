@@ -1,2 +1,9 @@
 document.body.classList.add('calling');
-document.querySelector('.show--calling').innerHTML = "<%=j render 'calling' %>"
+document.querySelector('.navbar').classList.add('calling');
+
+document.querySelector('[data-calling-container]').setAttribute("id", "<%= "contact_#{dom_id(@call)}" %>")
+document.querySelector('[data-calling-container]').setAttribute("data-turbolinks-permanent", "")
+
+document.querySelector('[data-calling-container]').innerHTML = "<%=j render 'calling' %>"
+
+document.querySelector('#comment_content').focus()

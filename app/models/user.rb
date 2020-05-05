@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :calls, foreign_key: :creator_id, inverse_of: :creator
 
   def outgoing_call_number
-    '+15136854579'
+    Rails.env.production? ? '+33644644072' : '+15136854579'
   end
 
   concerning :Personable do

@@ -5,7 +5,7 @@
   </div>
 <% end %>
 
-<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-light bg-light" data-turbolinks-permanent>
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag 'logo/gradient-dark.png', style: "width: 118px; margin-bottom: 0.2rem;" %>
@@ -16,8 +16,15 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarMain">
-      <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-      </ul>
+      <div class="navbar-nav ml-auto mt-2 mt-md-0">
+        <div class="current-call d-none align-items-center mr-5">
+          <span class="timer mr-3" data-target="timer.container">00:00:00</span>
+
+          <button class="btn circle btn-sm btn--call btn--hangup" data-action="call#hangup">
+            <i class="fas fa-phone mr-0"></i>
+          </button>
+        </div>
+      </div>
 
       <ul class="navbar-nav">
         <% if user_signed_in? %>

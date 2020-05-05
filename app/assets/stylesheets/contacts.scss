@@ -62,13 +62,13 @@ td > .person-name {
   }
 }
 
-body:not(.calling) {
+body:not(.calling), .navbar:not(.calling) {
   .show--calling {
     @extend .hidden !optional;
   }
 }
 
-body.calling {
+body.calling, .navbar.calling {
   .hide--calling {
     @extend .hidden !optional;
   }
@@ -80,14 +80,16 @@ body.calling {
   }
 
   .show--calling {
-    display: flex;
+    display: flex !important;
   }
 
   .contact__header {
     .avatarable > img {
-      animation: alertPulse 1.5s ease-out;
-      animation-iteration-count: infinite;
-      opacity: 1; 
+      animation: calling 2s ease infinite;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
     h2 {
@@ -122,5 +124,20 @@ body.contact-name--visible {
       font-size: 1.3rem;
       font-weight: normal;
     }
+  }
+}
+
+@keyframes calling {
+  0% {
+      transform: scale(1);
+  }
+  15% {
+      box-shadow: 0 0 0 5px rgba(255, 193, 7, 0.4);
+  }
+  25% {
+      box-shadow: 0 0 0 10px rgba(255, 193, 7, 0.4), 0 0 0 20px rgba(255, 193, 7, 0.2);
+  }
+  25% {
+      box-shadow: 0 0 0 15px rgba(255, 193, 7, 0.4), 0 0 0 30px rgba(255, 193, 7, 0.2);
   }
 }
