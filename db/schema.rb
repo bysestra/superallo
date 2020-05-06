@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_113519) do
+ActiveRecord::Schema.define(version: 2020_05_06_193220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -157,6 +157,15 @@ ActiveRecord::Schema.define(version: 2020_05_05_113519) do
     t.index ["user_id"], name: "index_services_on_user_id"
   end
 
+  create_table "surveys", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "account_id", null: false
+    t.string "name"
+    t.text "template"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_surveys_on_account_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -181,5 +190,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_113519) do
   add_foreign_key "contacts", "accounts"
   add_foreign_key "custom_fields", "accounts"
   add_foreign_key "services", "users"
+  add_foreign_key "surveys", "accounts"
   add_foreign_key "users", "accounts"
 end

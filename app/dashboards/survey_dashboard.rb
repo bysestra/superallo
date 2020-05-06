@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CustomFieldDashboard < Administrate::BaseDashboard
+class SurveyDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,13 +9,10 @@ class CustomFieldDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::String.with_options(searchable: false),
-    label: Field::String,
-    variant: Field::String,
-    choices: Field::String,
-    account_id: Field::String,
+    name: Field::String,
+    template: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    name: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,32 +22,26 @@ class CustomFieldDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
-  label
-  variant
-  choices
+  name
+  template
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
-  label
-  variant
-  choices
+  name
+  template
   created_at
   updated_at
-  name
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  label
-  variant
-  choices
-  account_id
   name
+  template
   ].freeze
 
   # COLLECTION_FILTERS
@@ -65,10 +56,10 @@ class CustomFieldDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how custom fields are displayed
+  # Overwrite this method to customize how surveys are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(custom_field)
-  #   "CustomField ##{custom_field.id}"
+  # def display_resource(survey)
+  #   "Survey ##{survey.id}"
   # end
 end

@@ -75,3 +75,4 @@ gem 'sucker_punch' # Background jobs.
 gem 'pagy' # Pagination.
 gem 'searchkick' # Elastic search wrapper.
 gem 'local_time' # Time and date display helpers.
+gem 'liquid' # Survey templates.
