@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= form.fields_for :properties, OpenStruct.new(contact.properties) do |builder| %>
+  <% form.fields_for :properties, OpenStruct.new(contact.properties) do |builder| %>
     <% Current.account.custom_fields.each do |field| %>
       <%= render "custom_fields/#{field.variant}", field: field, form: builder %>
     <% end %>

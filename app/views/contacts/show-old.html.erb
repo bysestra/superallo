@@ -1,0 +1,110 @@
+<%= content_for :head do %>
+  <%= tag.meta name: 'current-twilio-capability-url', content: twilio_capability_url %>
+  <%= tag.meta name: 'current-twilio-language', content: 'fr-Fr' %>
+  <%= tag.meta name: 'current-contact-id', content: @contact.id %>
+  <%= tag.meta name: 'current-account-id', content: Current.account.id %>
+  <%= tag.meta name: 'current-user-id', content: Current.user.id %>
+<% end %>
+
+<div class="row mb-5 align-items-center">
+  <div class="col-sm-12 col-md-4 btn-disabled--calling">
+    <%= link_to contacts_path, class: 'btn btn-primary mr-2' do %>
+      <i class="fas fa-chevron-left mx-1"></i>
+    <% end %>
+
+    <%= link_to edit_contact_path(@contact), class: 'btn btn-primary' do %>
+      <i class="fas fa-pencil-alt"></i> Edit
+    <% end %>
+
+    <div class="d-md-none mt-2 hide--calling">
+      <% if @contact.phone_number.present? %>
+        <%= link_to contact_calls_path(@contact), class: 'btn btn--call mr-2', method: :post, remote: :true do %>
+          <i class="fas fa-phone"></i> Call
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-8 mt-3 mt-md-1 calling__container">
+    <div class="contact__header d-flex justify-content-between align-items-center">
+      <div data-controller="viewport-entrance-toggle" data-viewport-entrance-toggle-body-class="contact-name--visible">
+        <%= render_person_name @contact %>
+      </div>
+
+      <div class="d-md-block d-none hide--calling">
+        <% if @contact.phone_number.present? %>
+          <%= link_to contact_calls_path(@contact), class: 'btn btn--call mr-2', title: "#{Current.user.outgoing_call_number} is your Caller ID", method: :post, remote: :true do %>
+            <i class="fas fa-phone"></i> Call
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="d-md-block show--calling" data-calling-container></div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4 pr-4">
+    <dl class="dl-horizontal" data-controller="sticky" class="conact-sidebar">
+      <div class="contact-sidebar__name d-flex justify-content-between align-items-start">
+        <%= render_person_name @contact %>
+
+        <%= link_to edit_contact_path(@contact), class: 'btn circle btn-sm btn-primary hide--calling' do %>
+          <i class="fas fa-pencil-alt mr-0"></i>
+        <% end %>
+      </div>
+
+      <div class="contact-fields">
+        <%= term_description_tags 'Company', @contact.company_name %>
+        <%= term_description_tags 'Phone number', @contact.phone_number %>
+        <%= term_description_tags 'Email', @contact.email_address %>
+
+        <% @contact.properties.each do |name, value| %>
+          <%= term_description_tags @contact.custom_fields.label_for(name: name), value.humanize %>
+        <% end %>
+      </div>
+    </dl>
+  </div>
+
+  <div class="col-sm-12 col-md-8">
+    <%= form_with model: @contact.comments.build(creator: Current.user), class: 'mb-5 comment-form' do |f| %>
+      <%= f.hidden_field :creator_id %>
+      <%= f.hidden_field :commentable_id %>
+
+      <div class="field">
+        <%= f.rich_text_area :content, placeholder: 'Take notes during the call…' %>
+      </div>
+
+      <div class="mt-2 d-flex justify-content-between align-items-center">
+        <%= f.submit 'Add this comment', class: 'btn btn-primary' %>
+        <em class="ml-2">Other <%= Current.account.name %> users will be able to see this comment.</em>
+      </div>
+    <% end %>
+
+    <div class="events pl-2" data-controller="anchor-highlight">
+      <% @contact.events.each do |event| %>
+        <section class="contact-event" id="<%= dom_id(event) %>">
+          <div class="contact-event__inner pl-1">
+            <%= image_tag event.creator.avatar_url, class: "circle mr-2 contact-event__avatar" %>
+
+            <div class="contact-event__meta">
+              <%= link_to local_time_ago(event.created_at), contact_path(anchor: dom_id(event)) %>
+              <p><%= event_to_sentence event %></p>
+            </div>
+
+            <div class="contact-event__content mb-3">
+              <% if event.respond_to?(:content) %>
+                <%= event.content %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="contact-event__actions mt-1 hidden">
+            <%= link_to 'Show', event, class: 'btn btn-sm btn-warning' %>
+          </div>
+        </section>
+      <% end %>
+    </div>
+  </div>
+</div>
