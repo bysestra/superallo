@@ -54,7 +54,9 @@
 
     <section class="survey mt-5" data-controller="sticky">
       <div class="survey__body">
-        <%= Current.survey.render surveyee: @contact %>
+        <%= form_with(model: @contact, local: true) do |form| %>
+          <%= Current.survey.render surveyee: @contact, account: Current.account %>
+        <% end %>
       </div>
 
       <footer class="survey__footer">

@@ -7,8 +7,8 @@ class Current < ActiveSupport::CurrentAttributes
 
   def user=(user)
     super
-    self.account ||= user.account
-    self.survey  ||= user.account.surveys&.first
+    self.account = user.account
+    self.survey  = user.account.surveys&.first
   end
 
   def user

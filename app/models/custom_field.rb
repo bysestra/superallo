@@ -11,4 +11,8 @@ class CustomField < ApplicationRecord
       select(:label).find_by(name: name).label
     end
   end
+
+  def to_partial_path
+    "custom_fields/#{variant}"
+  end
 end
