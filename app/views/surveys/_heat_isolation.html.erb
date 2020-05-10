@@ -1,1 +1,45 @@
-Hi <%= surveyee.name %>!
+<section class="survey__section survey__section--collapsed" data-controller="toggle" data-toggle-class="survey__section--collapsed">
+  <h1>Envois de SMS et Email</h1>
+  <small class="survey__section-expander" data-action="click->toggle#toggleClass"><i class="fas fa-expand-alt"></i></small>
+  <small class="survey__section-collapser" data-action="click->toggle#toggleClass"><i class="fas fa-compress-alt"></i></small>
+
+  <p>Envois d’un sms et email au bénéficiaire de l’aide pour avertir d’un appel à téléphonique à (00.00) heure pour une enquête obligatoire afin de finaliser
+  le dossier d’aide à l’isolation (ou chauffage).</p>
+</section>
+
+<section class="survey__section survey__section--collapsed" data-controller="toggle" data-toggle-class="survey__section--collapsed">
+  <h1>Appel Pour Enquete de Satisfaction</h1>
+  <small class="survey__section-expander" data-action="click->toggle#toggleClass"><i class="fas fa-expand-alt"></i></small>
+  <small class="survey__section-collapser" data-action="click->toggle#toggleClass"><i class="fas fa-compress-alt"></i></small>
+
+  <p>Bounjour <%= surveyee.title %> <%= surveyee.name.full %>?</p>
+  <p>Je vous appel au nom de la société ENI GAS & POWER France qui prend en charge les travaux de
+  rénovation qui ont été fait chez vous.</p>
+
+  <p>Dans le cadre de nos enquêtes de satisfaction, notre conversation est enregistrée, vous pouvez demander
+  à ne pas être enregistré si vous le voulez, votre accès à vos données et à votre  enregistrement est possible
+  sur demande par mail à l’adresse: <%= mail_to 'enquete@france-thd.com' %></p>
+
+  <p>Avez vous avec vous les documents délivrés par les artisans qui ont réalisé les travaux? Je vous attends…</p>
+
+  <p>Je commence les questions c’est assez rapide…</p>
+</section>
+
+<section class="survey__section">
+  <p class="form-group">
+    <%= contact_form.label :name, 'Nom prénom' %>
+    <%= contact_form.text_field :name, class: 'form-control' %>
+  </p>
+
+  <% { address: "Votre adresse, s'il vous plaît", isolation_type: nil }.each do |name, label| %>
+    <% field = Current.account.custom_fields.find_by(name: name) %>
+    <%= render "custom_fields/#{field.variant}", field: field, label: label, form: properties_form %>
+  <% end %>
+
+  <p>Avez vous avec vous les documents délivrés par les artisans qui ont réalisé les travaux? Je vous attends…</p>
+  <p>Envois d’un sms et email au bénéficiaire de l’aide pour avertir d’un appel à téléphonique à (00.00) heure pour une enquête obligatoire afin de finaliser
+  le dossier d’aide à l’isolation (ou chauffage).</p>
+  <p>Envois d’un sms et email au bénéficiaire de l’aide pour avertir d’un appel à téléphonique à (00.00) heure pour une enquête obligatoire afin de finaliser
+  le dossier d’aide à l’isolation (ou chauffage).</p>
+</section>
+

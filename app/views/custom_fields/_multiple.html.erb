@@ -1,0 +1,10 @@
+<div class="form-group">
+  <%= form.label label || field.label %>
+
+  <% form.collection_check_boxes field.name, field.choices.split(','), :humanize, :strip do |check| %>
+    <div class="form-check">
+      <%= check.check_box class: 'form-check-input cbx' %>
+      <%= check.label class: 'form-check-label' %>
+    </div>
+  <% end %>
+</div>

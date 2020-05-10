@@ -1,4 +1,4 @@
 <div class="form-group">
-  <%= form.label field.label.humanize %>
+  <%= form.label (label || field.label.humanize) %>
   <%= form.text_field field.name, class: 'form-control' %>
 </div>

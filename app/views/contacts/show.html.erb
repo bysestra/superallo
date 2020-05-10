@@ -52,10 +52,12 @@
       </div>
     </div>
 
-    <section class="survey mt-5" data-controller="sticky">
+    <section class="survey mt-5">
       <div class="survey__body">
         <%= form_with(model: @contact, local: true) do |form| %>
-          <%= Current.survey.render surveyee: @contact, account: Current.account %>
+          <%= form.fields_for :properties, OpenStruct.new(@contact.properties) do |builder| %>
+            <%= Current.survey.render surveyee: @contact, contact_form: form, properties_form: builder %>
+          <% end %>
         <% end %>
       </div>
 
@@ -80,7 +82,7 @@
       <% end %>
     </div>
 
-    <%= form_with model: @contact.comments.build(creator: Current.user), class: 'mb-5 comment-form' do |f| %>
+    <% form_with model: @contact.comments.build(creator: Current.user), class: 'mb-5 comment-form' do |f| %>
       <%= f.hidden_field :creator_id %>
       <%= f.hidden_field :commentable_id %>
 
