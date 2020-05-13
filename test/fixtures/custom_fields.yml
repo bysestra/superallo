@@ -1,11 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  account: one
+string:
+  account: acme
   label: MyString
-  variant: MyString
+  variant: string
+  choices: 
+  name: my_string
 
-two:
-  account: two
-  label: MyString
-  variant: MyString
+multiple:
+  account: acme
+  label: Languages
+  variant: multiple
+  choices: 'English,French,Hebrew'
+  name: languages

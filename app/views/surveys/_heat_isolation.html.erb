@@ -1,4 +1,4 @@
-<section class="survey__section survey__section--collapsed" data-controller="toggle" data-toggle-class="survey__section--collapsed">
+<section class="survey__section" data-controller="toggle" data-toggle-class="survey__section--collapsed">
   <h1>Envois de SMS et Email</h1>
   <small class="survey__section-expander" data-action="click->toggle#toggleClass"><i class="fas fa-expand-alt"></i></small>
   <small class="survey__section-collapser" data-action="click->toggle#toggleClass"><i class="fas fa-compress-alt"></i></small>
@@ -7,7 +7,7 @@
   le dossier d’aide à l’isolation (ou chauffage).</p>
 </section>
 
-<section class="survey__section survey__section--collapsed" data-controller="toggle" data-toggle-class="survey__section--collapsed">
+<section class="survey__section" data-controller="toggle" data-toggle-class="survey__section--collapsed">
   <h1>Appel Pour Enquete de Satisfaction</h1>
   <small class="survey__section-expander" data-action="click->toggle#toggleClass"><i class="fas fa-expand-alt"></i></small>
   <small class="survey__section-collapser" data-action="click->toggle#toggleClass"><i class="fas fa-compress-alt"></i></small>
@@ -31,15 +31,21 @@
     <%= contact_form.text_field :name, class: 'form-control' %>
   </p>
 
-  <% { address: "Votre adresse, s'il vous plaît", isolation_type: nil }.each do |name, label| %>
-    <% field = Current.account.custom_fields.find_by(name: name) %>
-    <%= render "custom_fields/#{field.variant}", field: field, label: label, form: properties_form %>
+  <% {
+    address: "Votre adresse, s'il vous plaît",
+    isolation_type: nil,
+    ownership_type: "Êtes-vous propriétaire ou locataire",
+    roof_square_meters: "Savez-vous combien de m² a été isolé dans vos combles",
+    basement_square_meters: "Savez-vous combien de m² a été isolé dans vos sous-sol",
+    walls_square_meters: "Savez-vous combien de m² a été isolé en mur",
+    contact_method: "De quelle façon avez-vous été contacté?",
+    waiting_period: "Combien de jour avez-vous attendu entre votre souscription à l’aide et les travaux?",
+    satisfaction: "Êtes-vous satisfait des travaux?",
+  }.each do |name, label| %>
+    <%= render_survey_field name, properties_form, label %>
   <% end %>
-
-  <p>Avez vous avec vous les documents délivrés par les artisans qui ont réalisé les travaux? Je vous attends…</p>
-  <p>Envois d’un sms et email au bénéficiaire de l’aide pour avertir d’un appel à téléphonique à (00.00) heure pour une enquête obligatoire afin de finaliser
-  le dossier d’aide à l’isolation (ou chauffage).</p>
-  <p>Envois d’un sms et email au bénéficiaire de l’aide pour avertir d’un appel à téléphonique à (00.00) heure pour une enquête obligatoire afin de finaliser
-  le dossier d’aide à l’isolation (ou chauffage).</p>
 </section>
 
+<section class="survey__section">
+  <p>Je vous remercie pour le temps accordé, tout est bon pour moi, je vous souhaite beaucoup d’économie d’énergie… Au revoir.</p>
+</section>

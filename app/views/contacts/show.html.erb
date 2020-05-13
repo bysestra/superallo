@@ -53,17 +53,17 @@
     </div>
 
     <section class="survey mt-5">
-      <div class="survey__body">
-        <%= form_with(model: @contact, local: true) do |form| %>
-          <%= form.fields_for :properties, OpenStruct.new(@contact.properties) do |builder| %>
-            <%= Current.survey.render surveyee: @contact, contact_form: form, properties_form: builder %>
-          <% end %>
-        <% end %>
-      </div>
+      <%= form_with(model: @contact, local: true) do |form| %>
+        <div class="survey__body">
+            <%= form.fields_for :properties, OpenStruct.new(@contact.properties) do |builder| %>
+              <%= Current.survey.render surveyee: @contact, contact_form: form, properties_form: builder %>
+            <% end %>
+        </div>
 
-      <footer class="survey__footer">
-        <%= button_tag 'Save this', class: 'btn btn-lg btn-success' %>
-      </footer>
+        <footer class="survey__footer">
+          <%= form.submit 'Save this', class: 'btn btn-lg btn-success' %>
+        </footer>
+      <% end %>
     </section>
   </div>
 
@@ -82,21 +82,16 @@
       <% end %>
     </div>
 
-    <% form_with model: @contact.comments.build(creator: Current.user), class: 'mb-5 comment-form' do |f| %>
-      <%= f.hidden_field :creator_id %>
-      <%= f.hidden_field :commentable_id %>
-
-      <div class="field">
-        <%= f.rich_text_area :content, placeholder: 'Take notes during the call…' %>
-      </div>
-
-      <div class="mt-2 d-flex justify-content-between align-items-center">
-        <%= f.submit 'Add this comment', class: 'btn btn-primary' %>
-        <em class="ml-2">Other <%= Current.account.name %> users will be able to see this comment.</em>
-      </div>
-    <% end %>
-
     <div class="events mt-5" data-controller="anchor-highlight">
+      <section class="contact-event contact-event--new">
+        <div class="contact-event__inner pl-1">
+          <%= image_tag Current.user.avatar_url, class: "circle mr-2 contact-event__avatar" %>
+
+          <div class="contact-event__content mb-3">
+            <%= render 'comments/form' %>
+          </div>
+        </div>
+      </section>
       <% @contact.events.each do |event| %>
         <section class="contact-event" id="<%= dom_id(event) %>">
           <div class="contact-event__inner pl-1">
@@ -112,10 +107,6 @@
                 <%= event.content %>
               <% end %>
             </div>
-          </div>
-
-          <div class="contact-event__actions mt-1 hidden">
-            <%= link_to 'Show', event, class: 'btn btn-sm btn-warning' %>
           </div>
         </section>
       <% end %>

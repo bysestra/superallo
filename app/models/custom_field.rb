@@ -12,7 +12,25 @@ class CustomField < ApplicationRecord
     end
   end
 
+  def choices=(values)
+    processed = case values
+      when String then values.split(',').map(&:strip).join(',')
+      when Array then values.map(&:strip).join(',')
+      else values
+    end
+
+    super processed
+  end
+
   def to_partial_path
     "custom_fields/#{variant}"
+  end
+
+  def permitted_param
+    case variant.to_sym
+      when :multiple then { name.to_sym => [] }
+      when :string then name.to_sym
+      else name.to_sym
+    end
   end
 end

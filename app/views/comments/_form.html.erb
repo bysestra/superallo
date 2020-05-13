@@ -1,0 +1,16 @@
+<%= form_with model: @contact.comments.build(creator: Current.user), class: 'comment-form' do |f| %>
+  <%= f.hidden_field :creator_id %>
+  <%= f.hidden_field :commentable_id %>
+
+  <div class="field">
+    <%= f.rich_text_area :content, placeholder: 'Take notes during the call…' %>
+  </div>
+
+  <div class="mt-2 d-flex flex-column">
+    <%= f.submit 'Add this comment', class: 'btn btn-primary' %>
+
+    <span class="mt-1">
+      <small>Other <strong><%= Current.account.name %></strong> users can see your comments.</small>
+    </span>
+  </div>
+<% end %>

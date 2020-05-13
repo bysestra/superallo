@@ -6,11 +6,15 @@ module CallsHelper
 
   def event_to_sentence(event)
     string = case event
-      when Call then "#{event.creator.name.familiar} <strong>called</strong> #{event.callee.name.full}"
-      when Comment then "#{event.creator.name.familiar} <strong>commented</strong> about #{event.commentable.name.full}"
+      when Call then "#{event_creator_name(event)} <strong>called</strong> #{event.callee.name.full}"
+      when Comment then "#{event_creator_name(event)} <strong>commented</strong> about #{event.commentable.name.full}"
       else ''
     end
 
     string.html_safe
+  end
+
+  def event_creator_name(event)
+    Current.user == event.creator ? "You" : event.creator.name.familiar
   end
 end

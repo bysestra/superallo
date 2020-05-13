@@ -1,5 +1,9 @@
 <div class="form-group">
-  <%= form.label label || field.label %>
+  <% if local_variables.include?(:label) && label.present? %>
+    <%= form.label label %>
+  <% else %>
+    <%= form.label field.label.humanize %>
+  <% end %>
 
   <% form.collection_check_boxes field.name, field.choices.split(','), :humanize, :strip do |check| %>
     <div class="form-check">

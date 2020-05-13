@@ -6,6 +6,6 @@ one:
   template: MyString
 
 two:
-  account: two
+  account: one
   name: MyString
   template: MyString
