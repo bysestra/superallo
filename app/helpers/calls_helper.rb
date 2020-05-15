@@ -17,4 +17,11 @@ module CallsHelper
   def event_creator_name(event)
     Current.user == event.creator ? "You" : event.creator.name.familiar
   end
+
+  def follow_up_color(date)
+    return 'danger' if date.past?
+    return 'success' if date.future?
+
+    'primary'
+  end
 end

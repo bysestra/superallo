@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_193220) do
+ActiveRecord::Schema.define(version: 2020_05_15_170450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_193220) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "properties", default: "{}", null: false
+    t.date "follow_up_date"
     t.index ["account_id"], name: "index_contacts_on_account_id"
     t.index ["properties"], name: "index_contacts_on_properties", using: :gin
   end
