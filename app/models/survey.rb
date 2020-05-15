@@ -13,6 +13,10 @@ class Survey < ApplicationRecord
     ApplicationController.renderer.render partial: to_partial_path, locals: {
       surveyee: surveyee, contact_form: contact_form, properties_form: properties_form
     }
+  rescue ActionView::MissingTemplate
+    ApplicationController.renderer.render partial: "surveys/survey", locals: {
+      surveyee: surveyee, contact_form: contact_form, properties_form: properties_form
+    }
   end
 
   def to_partial_path
