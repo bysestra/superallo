@@ -10,7 +10,7 @@ class SurveyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::String.with_options(searchable: false),
     name: Field::String,
-    template: Field::Text,
+    account: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -22,16 +22,16 @@ class SurveyDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
+  account
   name
-  template
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
+  account
   name
-  template
   created_at
   updated_at
   ].freeze
@@ -41,7 +41,7 @@ class SurveyDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   name
-  template
+  account
   ].freeze
 
   # COLLECTION_FILTERS

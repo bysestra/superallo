@@ -11,7 +11,6 @@ Rails.application.routes.draw do
       resources :surveys
       resources :accounts
       resources :users
-      resources :announcements
       resources :custom_fields
   
       root to: "users#index"

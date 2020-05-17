@@ -12,7 +12,10 @@ class CustomFieldDashboard < Administrate::BaseDashboard
     label: Field::String,
     variant: Field::String,
     choices: Field::String,
-    account_id: Field::String,
+    account: Field::BelongsTo.with_options(
+      searchable: true,
+      searchable_field: "name",
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     name: Field::String,
@@ -25,6 +28,7 @@ class CustomFieldDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
+  account
   label
   variant
   choices
@@ -34,6 +38,7 @@ class CustomFieldDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
+  account
   label
   variant
   choices
@@ -49,7 +54,7 @@ class CustomFieldDashboard < Administrate::BaseDashboard
   label
   variant
   choices
-  account_id
+  account
   name
   ].freeze
 
