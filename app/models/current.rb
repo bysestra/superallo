@@ -8,7 +8,7 @@ class Current < ActiveSupport::CurrentAttributes
   def user=(user)
     super
     self.account = user.account
-    self.survey  = user.account.surveys&.first
+    self.survey  = user.account.surveys&.first || Survey.new(name: "Temporary")
   end
 
   def user

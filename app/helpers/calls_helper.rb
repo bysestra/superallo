@@ -19,6 +19,7 @@ module CallsHelper
   end
 
   def follow_up_color(date)
+    return 'primary' unless date
     return 'danger' if date.past?
     return 'success' if date.future?
 

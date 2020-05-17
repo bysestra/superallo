@@ -81,7 +81,7 @@
         <div class="contact__follow-up text-center" style="line-height: 1.3; padding-top: 0.5rem;" data-controller="datetime">
           <small class="badge badge-<%= follow_up_color(@contact.follow_up_date) %> d-block">Next follow-up</small>
           <%= f.hidden_field :follow_up_date, data: { target: "datetime.destination", action: "change->form#submit" } %>
-          <%= text_field_tag :follow_up_date, @contact.follow_up_date.to_s(:picker), data: { target: "datetime.date" }, placeholder: "Pick a date…" %>
+          <%= text_field_tag :follow_up_date, @contact.follow_up_date&.to_s(:picker), data: { target: "datetime.date" }, placeholder: "Pick a date…" %>
         </div>
       <% end %>
 

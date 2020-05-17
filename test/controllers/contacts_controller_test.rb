@@ -15,4 +15,15 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     patch contact_url(@contact), params: { contact: { properties: { languages: %w( English French ) } } }
     assert_equal %w( English French ), @contact.reload.properties["languages"]
   end
+
+  test "can get #show" do
+    get contact_url @contact
+    assert_response :success
+  end
+
+  test "can get #show with no surveys" do
+    Survey.destroy_all
+    get contact_url @contact
+    assert_response :success
+  end
 end
