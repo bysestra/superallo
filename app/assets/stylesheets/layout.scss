@@ -119,3 +119,17 @@ audio {
     }
   }
 }
+
+.navbar {
+  .search-form {
+    width: 20em;
+
+    button[type="submit"] {
+      display: none;
+    }
+
+    .form-group {
+      margin: 0;
+    }
+  }
+}

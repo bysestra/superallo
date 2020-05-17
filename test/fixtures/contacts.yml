@@ -8,6 +8,7 @@ one:
   phone_number: MyString
   email_address: MyString
   account: acme
+  properties: {}
 
 two:
   first_name: MyString
@@ -17,3 +18,4 @@ two:
   phone_number: MyString
   email_address: MyString
   account: acme
+  properties: {}

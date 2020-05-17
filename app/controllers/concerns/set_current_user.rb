@@ -12,6 +12,8 @@ module SetCurrentUser
   end
 
   def ensure_account_request_path_prefix
+    return if Rails.env.test?
+
     unless request.path.include?(Current.account.slug)
       redirect_to after_sign_in_path_for(Current.user.class)
     end

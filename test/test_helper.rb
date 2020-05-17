@@ -11,4 +11,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  include Devise::Test::IntegrationHelpers
+
+  parallelize_setup do |worker|
+    Searchkick.index_suffix = worker
+    Contact.reindex
+    Searchkick.disable_callbacks
+  end
 end

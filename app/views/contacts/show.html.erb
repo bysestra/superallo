@@ -6,7 +6,11 @@
   <%= tag.meta name: 'current-user-id', content: Current.user.id %>
 <% end %>
 
-<%= content_for :navbar do %>
+<%= content_for :_navbar do %>
+  <%= render "contacts/search" %>
+<% end %>
+
+<% content_for :_navbar do %>
   <div class="navbar__contact d-flex mr-2 hidden">
     <div class="mr-4">
       <%= render_person_name @contact %>

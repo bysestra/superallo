@@ -1,6 +1,6 @@
-<%= form_with model_name: :search, url: contacts_path, method: :get, local: true do |f| %>
+<%= form_with model_name: :search, url: contacts_path, method: :get, local: true, class: 'search-form' do |f| %>
   <div class="form-group d-flex">
-    <%= f.search_field :q, class: 'form-control', placeholder: 'Search contacts…' %>
+    <%= f.search_field :q, value: params[:q], class: 'form-control', placeholder: 'Search contacts…' %>
     <%= f.button type: :submit, class: 'btn btn-warning ml-3' do %>
       <i class="fas fa-search"></i>
     <% end %>

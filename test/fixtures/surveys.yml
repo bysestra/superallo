@@ -1,11 +1,3 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  account: one
-  name: MyString
-  template: MyString
-
-two:
-  account: one
-  name: MyString
-  template: MyString
+heat_isolation:
+  account: acme
+  name: Heat Isolation

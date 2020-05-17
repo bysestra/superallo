@@ -1,16 +1,24 @@
 <div class="row">
   <div class="col-sm-12">
-    <h2><%= contacts_index_heading(params) %></h2>
+    <h2 class="d-flex align-items-center">
+      <%= contacts_index_heading(params) %>
+
+      <% searching do %>
+        <%= link_to contacts_path, class: "btn btn-sm btn-warning circle ml-2", style: "line-height: 1.2;", title: "Reset search" do %>
+          <i class="fas fa-times mr-0"></i>
+        <% end %>
+      <% end %>
+    </h2>
   </div>
 </div>
 
 <div class="row mt-4 mb-2">
   <div class="col-sm-12 col-md-4 contacts__search">
-    <%= render 'search' %>
+    <%= render "search" %>
   </div>
 
   <div class="col-sm-12 col-md-8 text-md-right mb-3 mb-md-0">
-    <%= link_to new_contact_path, class: 'btn btn-primary' do %>
+    <%= link_to new_contact_path, class: "btn btn-primary" do %>
       Add New Contact
     <% end %>
   </div>
@@ -28,12 +36,12 @@
     <tbody>
       <% @contacts.each do |contact| %>
         <%= content_tag :tr, id: dom_id(contact), class: dom_class(contact) do %>
-          <td><%= link_to render_person_name(contact, skip_title: false), contact, class: 'person-name uncolored' %></td>
+          <td><%= link_to render_person_name(contact, skip_title: false), contact, class: "person-name uncolored" %></td>
           <td><%= last_contact_call_date contact %></td>
         <% end %>
       <% end %>
     </tbody>
   </table>
 
-  <%= render 'pagination' %>
+  <%= render "pagination" %>
 </div>

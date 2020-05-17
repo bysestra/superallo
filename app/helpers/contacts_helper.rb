@@ -3,6 +3,10 @@ module ContactsHelper
     params.fetch(:q, false).presence ? "Results for “#{params[:q].html_safe}”" : 'All Contacts'
   end
 
+  def searching(&block)
+    yield if params.fetch(:q, false).present?
+  end
+
   def term_description_tags(label, content)
     if content.present?
       tag.span do
