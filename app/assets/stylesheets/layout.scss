@@ -147,6 +147,11 @@ audio {
   }
 }
 
+.ui-state-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .ui-datepicker-prev, .ui-datepicker-next {
   line-height: 2;
   text-align: center;
