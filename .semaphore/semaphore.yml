@@ -8,6 +8,9 @@ agent:
 blocks:
   - name: Test
     task:
+      prologue:
+        commands:
+          - sem-version node 10.13.0
       env_vars:
         - name: DATABASE_URL
           value: "postgresql://postgres:@0.0.0.0:5432/superallo_test"
@@ -18,9 +21,12 @@ blocks:
         commands:
           - checkout
           - sem-service start postgres 11
+          - sem-service start elasticsearch
           - sem-version ruby 2.7.1
           - cache restore
           - bundle install --path vendor/bundle
+          - yarn install
           - cache store
           - bundle exec rake db:setup
+          - bundle exec rake searchkick:reindex:all
           - bundle exec rails test
