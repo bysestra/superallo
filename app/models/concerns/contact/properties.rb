@@ -2,7 +2,7 @@ module Contact::Properties
   extend ActiveSupport::Concern
 
   included do
-    store :properties
+    store :properties, accessors: %i[ normalize_arrays ]
   end
 
   def custom_fields

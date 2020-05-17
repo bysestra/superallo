@@ -1,19 +1,22 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :users
-    resources :announcements
-    resources :custom_fields
-
-    root to: 'users#index'
-  end
-
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
 
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
+
+    namespace :admin do
+
+      resources :surveys
+      resources :accounts
+      resources :users
+      resources :announcements
+      resources :custom_fields
+  
+      root to: 'users#index'
+    end
   end
 
   resources :announcements, only: [:index]

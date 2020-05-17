@@ -1,0 +1,106 @@
+$sectionCounter: survey-section-counter;
+
+.survey {
+  &__footer {
+    // bottom: 0;
+    // position: fixed;
+    // padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    transform: translateZ(0);
+  }
+
+  hr {
+    border: 0;
+    height: 0.1rem;
+    background-image: linear-gradient(to right, rgba(250,248,247, 0.7), rgba(250,248,247, 1), rgba(250,248,247, 0.7));
+  }
+
+  h1 { font-size: 140%; }
+  h2 { font-size: 130%; }
+
+  &__section-expander {
+    display: none;
+  }
+
+  %section-toggler {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.65rem;
+  }
+
+  &__section-expander {
+    @extend %section-toggler;
+    display: none;
+  }
+
+  &__section-collapser {
+    @extend %section-toggler;
+    display: block;
+  }
+
+  label {
+    font-weight: bold;
+  }
+}
+
+.survey__section {
+  padding: 0.5rem;
+  margin-right: 3rem;
+  margin-bottom: 2.5rem;
+  border-radius: 0.1rem;
+  position: relative;
+
+  counter-reset: $sectionCounter;
+
+  [data-action] {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: rgba(250,248,247, 1);
+  }
+
+  p, .form-group {
+    counter-increment: $sectionCounter;
+
+    &:before {
+      content: counter($sectionCounter);
+      margin-left: -1.5rem;
+      margin-right: 1rem;
+      text-align: center;
+      font-size: 0.7em;
+      vertical-align: 7%;
+      font-family: var(--font-family-monospace);
+      color: #ccc;
+    }
+  }
+
+  &--collapsed {
+    opacity: 0.4;
+    margin-bottom: 0.85rem;
+
+    .survey__section-expander {
+      display: block !important;
+    }
+  
+    .survey__section-collapser {
+      display: none !important;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    p {
+      display: none;
+    }
+  }
+}
+
+.form-check-label {
+  font-weight: normal !important;
+}

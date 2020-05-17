@@ -70,7 +70,6 @@ body {
 
 .navbar {
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  opacity: 0.9;
 }
 
 audio {
@@ -86,4 +85,37 @@ audio {
 
 .turbolinks-progress-bar {
   background-color: var(--primary);
+}
+
+.ui-datepicker {
+  background: white none repeat scroll 0% 0%;
+  border: 1px solid rgba(153, 153, 153, 0.1);
+  border-radius: 0.6rem;
+  margin: 0.5rem 0px;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1), 0 10px 30px #fcf8f7;
+}
+
+.ui-datepicker-calendar {
+  td {
+    &.ui-datepicker-today > a {
+      font-weight: bold;
+    }
+
+    & > .ui-state-default {
+      background: rgba(153, 153, 153, 0.1);
+      // border-radius: 50%;
+      // width: 3rem;
+      // height: 3rem;
+      line-height: 1.6;
+      margin: 0.1em;
+      color: #222222;
+      text-align: center;
+    }
+
+    & > .ui-state-active {
+      background: var(--primary);
+      color: white;
+      font-weight: bold;
+    }
+  }
 }

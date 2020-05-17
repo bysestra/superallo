@@ -1,7 +1,7 @@
 .avatarable {
   position: relative;
 
-  .circle {
+  img.circle {
     width: 1.5em;
   }
 }
@@ -19,12 +19,36 @@ td > .person-name {
 }
 
 .contact-event {
-  padding: 1.2em 1.2em 0.2em 1.4em;
+  padding: 1em 1.2em 0.2em 1.4em;
   background: #faf8f7;
   border-radius: 1rem;
   margin-bottom: 1.8rem;
   display: flex;
   justify-content: space-between;
+
+  &--new {
+    trix-toolbar {
+      display: none;
+    }
+
+    trix-editor {
+      background: white;
+      border: 1px solid rgba(100,100,100,0.1);
+      margin-bottom: 1rem;
+    }
+
+    .field {
+      margin-bottom: 1rem;
+    }
+
+    form {
+      margin-top: 0.5rem;
+    }
+  }
+
+  pre {
+    margin-bottom: 0.65rem;
+  }
 
   &__avatar {
     width: 2.3rem;
@@ -43,8 +67,9 @@ td > .person-name {
   &__meta {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    // justify-content: space-between;
+    // flex-direction: row-reverse;
   }
 
   &:last-of-type {
@@ -103,6 +128,21 @@ body.contact-name--visible {
     opacity: 1;
     visibility: visible;
   }
+
+  .navbar__contact {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.navbar__contact, .contact-sidebar__name {
+  transition: all 0.2s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.contact__details {
+  margin-left: 3.6rem;
 }
 
 .contact-sidebar {
@@ -112,9 +152,6 @@ body.contact-name--visible {
   }
 
   &__name {
-    transition: all 0.2s ease;
-    opacity: 0;
-    visibility: hidden;
     margin-top: -3.25rem;
     border-bottom: 1px solid rgba(163, 163, 163, 0.2);
     margin-bottom: 1rem;
@@ -124,6 +161,13 @@ body.contact-name--visible {
       font-size: 1.3rem;
       font-weight: normal;
     }
+  }
+}
+
+.navbar {
+  .avatarable {
+    font-size: 1.3rem;
+    font-weight: normal;
   }
 }
 
