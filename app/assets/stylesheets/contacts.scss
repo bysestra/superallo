@@ -171,6 +171,12 @@ body.contact-name--visible {
   }
 }
 
+.contact {
+  &__follow-up {
+    max-width: 8rem;
+  }
+}
+
 @keyframes calling {
   0% {
       transform: scale(1);

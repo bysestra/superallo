@@ -11,6 +11,7 @@
     "data-confirm-modal": "^1.6.2",
     "easytimer.js": "^4.1.1",
     "expose-loader": "^0.7.5",
+    "form-request-submit-polyfill": "^2.0.0",
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
     "local-time": "^2.1.0",

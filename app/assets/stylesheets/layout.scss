@@ -133,3 +133,49 @@ audio {
     }
   }
 }
+
+.hasDatepicker {
+  max-width: 100%;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+  line-height: 2;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ui-datepicker-prev:before,
+.ui-datepicker-next:before {
+  display: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ui-datepicker-prev:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f100";
+}
+
+.ui-datepicker-next:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f101";
+}
