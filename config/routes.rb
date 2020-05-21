@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :today, only: :show, controller: :today
+
   resources :comments
 
   namespace :account do

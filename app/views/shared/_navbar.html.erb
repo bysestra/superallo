@@ -5,7 +5,7 @@
   </div>
 <% end %>
 
-<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-light bg-light" data-turbolinks-permanent>
+<nav id="navbar" class="navbar navbar-expand-md fixed-top navbar-light bg-light">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag 'logo/gradient-dark.png', style: "width: 118px; margin-bottom: 0.2rem;" %>
@@ -16,12 +16,20 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarMain">
-      <div class="navbar-nav mx-auto mt-md-0">
+      <div class="navbar-nav ml-auto mr-3 mt-md-0">
+        <%= link_to today_path, class: "btn btn-sm btn-secondary mt-1 #{"disabled" unless any_follow_ups_today?}", role: "button" do %>
+          <i class="fas fa-calendar-day"></i>
+          <%= today_follow_ups_title %>
+        <% end %>
+
         <%= yield :navbar %>
       </div>
 
       <ul class="navbar-nav">
         <% if user_signed_in? %>
+          <li class="nav-item">
+          </li>
+
           <li class="nav-item dropdown">
             <%= link_to "#", id: "navbar-dropdown", class: "nav-link dropdown-toggle", data: { target: "nav-account-dropdown", toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>
               <%= image_tag Current.user.avatar_url, height: 30, width: 30, class: "circle" %>
