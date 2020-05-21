@@ -69,7 +69,8 @@ class ContactsController < ApplicationController
     end
 
     def set_contacts
-      @contacts = Contact.search(params[:q].presence || '*', where: { account_id: Current.account.id })
+      @contacts = Contact.search(params[:q].presence || '*', where: { account_id: Current.account.id }, \
+      order: [{ follow_up_date: :asc }, { created_at: :desc }])
     end
 
     # Only allow a list of trusted parameters through.

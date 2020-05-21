@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<div class="table-responsive">
+<div class="table-responsive mt-4">
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
@@ -36,7 +36,7 @@
 
     <tbody>
       <% @contacts.each do |contact| %>
-        <%= content_tag :tr, id: dom_id(contact), class: dom_class(contact) do %>
+        <%= content_tag :tr, id: dom_id(contact), class: [dom_class(contact), ("table-danger" if contact.follow_up_date&.past?)] do %>
           <td><%= link_to render_person_name(contact, skip_title: false), contact, class: "person-name uncolored" %></td>
           <td><%= contact.follow_up_date&.to_s(:long) %></td>
           <td><%= last_contact_call_date contact %></td>
