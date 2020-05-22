@@ -17,9 +17,11 @@
 
     <div class="collapse navbar-collapse" id="navbarMain">
       <div class="navbar-nav ml-auto mr-3 mt-md-0">
-        <%= link_to today_path, class: "btn btn-sm btn-secondary mt-1 #{"disabled" unless any_follow_ups_today?}", role: "button" do %>
-          <i class="fas fa-calendar-day"></i>
-          <%= today_follow_ups_title %>
+        <% if user_signed_in? %>
+          <%= link_to today_path, class: "btn btn-sm btn-secondary mt-1 #{"disabled" unless any_follow_ups_today?}", role: "button" do %>
+            <i class="fas fa-calendar-day"></i>
+            <%= today_follow_ups_title %>
+          <% end %>
         <% end %>
 
         <%= yield :navbar %>
