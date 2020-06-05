@@ -1,5 +1,5 @@
 <% if @call.recording_url.present? %>
   <div>
-    <%= link_to 'Download recording', @call.recording_url, target: '_blank' %>
+    <%= link_to t(".download_recording"), @call.recording_url, target: '_blank' %>
   </div>
 <% end %>

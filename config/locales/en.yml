@@ -37,6 +37,16 @@ en:
       whats_new: "What's New"
       exciting_stuff: "Exciting stuff coming very soon!"
 
+  calls:
+    calling:
+      hangup: "Hangup"
+    content:
+      duration: "Duration: %{time}"
+      status: "Status: %{status}"
+      recording: "Recording:"
+    show:
+      download_recording: "Download recording"
+
   contacts:
     search:
       search_contacts: "Search contacts…"
