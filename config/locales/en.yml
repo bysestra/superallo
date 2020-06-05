@@ -41,3 +41,8 @@ en:
       name: "Name"
       follow_up: "Follow Up"
       last_call: "Last call"
+
+  shared:
+    footer:
+      terms: "Terms"
+      privacy: "Privacy"
