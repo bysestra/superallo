@@ -32,6 +32,11 @@
 en:
   hello: "Hello world"
 
+  announcements:
+    index:
+      whats_new: "What's New"
+      exciting_stuff: "Exciting stuff coming very soon!"
+
   contacts:
     search:
       search_contacts: "Search contacts…"
