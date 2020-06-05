@@ -53,6 +53,13 @@ en:
     other_users: "Other <strong>%{user}</strong> users can see your comments."
 
   contacts:
+    form:
+      prohibited_this_contact: "%{errors_count} prohibited this contact from being saved:"
+      destroy: "Destroy"
+      are_you_sure: "Are you sure?"
+      cancel: "Cancel"
+    edit:
+      edit_contact: "Edit Contact"
     search:
       search_contacts: "Search contacts…"
     index:
@@ -61,6 +68,23 @@ en:
       name: "Name"
       follow_up: "Follow Up"
       last_call: "Last call"
+    new:
+      new_contact: New Contact
+    show-old:
+      edit: "Edit"
+      call: "Call"
+      your_caller_id: "%{number} is your Caller ID"
+      company: "Company"
+      phone_number: "Phone number"
+      email: "Email"
+      take_notes: "Take notes during the call…"
+      add_this_comment: "Add this comment"
+      other_users: "Other %{user} users will be able to see this comment."
+      show: "Show"
+    show:
+      save_this: "Save this"
+      next_follow_up: "Next follow-up"
+      pick_a_date: "Pick a date…"
 
   shared:
     footer:

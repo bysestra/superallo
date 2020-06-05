@@ -1,7 +1,7 @@
 <%= form_with(model: contact, local: true) do |form| %>
   <% if contact.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+      <h2><%= t(".prohibited_this_contact", pluralize(contact.errors.count, "error")) %></h2>
 
       <ul>
       <% contact.errors.full_messages.each do |message| %>
@@ -50,16 +50,16 @@
   <div class="form-group">
     <% if contact.persisted? %>
       <div class="float-right">
-        <%= link_to 'Destroy', contact, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+        <%= link_to t(".destroy"), contact, method: :delete, class: "text-danger", data: { confirm: t(".are_you_sure") } %>
       </div>
     <% end %>
 
     <%= form.submit class: 'btn btn-primary' %>
 
     <% if contact.persisted? %>
-      <%= link_to "Cancel", contact, class: "btn btn-link" %>
+      <%= link_to t(".cancel"), contact, class: "btn btn-link" %>
     <% else %>
-      <%= link_to "Cancel", contacts_path, class: "btn btn-link" %>
+      <%= link_to t(".cancel"), contacts_path, class: "btn btn-link" %>
     <% end %>
   </div>
 <% end %>

@@ -13,13 +13,13 @@
     <% end %>
 
     <%= link_to edit_contact_path(@contact), class: 'btn btn-primary' do %>
-      <i class="fas fa-pencil-alt"></i> Edit
+      <i class="fas fa-pencil-alt"></i> <%= t(".edit") %>
     <% end %>
 
     <div class="d-md-none mt-2 hide--calling">
       <% if @contact.phone_number.present? %>
         <%= link_to contact_calls_path(@contact), class: 'btn btn--call mr-2', method: :post, remote: :true do %>
-          <i class="fas fa-phone"></i> Call
+          <i class="fas fa-phone"></i> <%= t(".call") %>
         <% end %>
       <% end %>
     </div>
@@ -33,7 +33,7 @@
 
       <div class="d-md-block d-none hide--calling">
         <% if @contact.phone_number.present? %>
-          <%= link_to contact_calls_path(@contact), class: 'btn btn--call mr-2', title: "#{Current.user.outgoing_call_number} is your Caller ID", method: :post, remote: :true do %>
+          <%= link_to contact_calls_path(@contact), class: 'btn btn--call mr-2', title: t(".your_caller_id", number: Current.user.outgoing_call_number), method: :post, remote: :true do %>
             <i class="fas fa-phone"></i> Call
           <% end %>
         <% end %>
@@ -56,9 +56,9 @@
       </div>
 
       <div class="contact-fields">
-        <%= term_description_tags 'Company', @contact.company_name %>
-        <%= term_description_tags 'Phone number', @contact.phone_number %>
-        <%= term_description_tags 'Email', @contact.email_address %>
+        <%= term_description_tags t(".company"), @contact.company_name %>
+        <%= term_description_tags t(".phone_number"), @contact.phone_number %>
+        <%= term_description_tags t(".email"), @contact.email_address %>
 
         <% @contact.properties.each do |name, value| %>
           <%= term_description_tags @contact.custom_fields.label_for(name: name), value.humanize %>
@@ -73,12 +73,12 @@
       <%= f.hidden_field :commentable_id %>
 
       <div class="field">
-        <%= f.rich_text_area :content, placeholder: 'Take notes during the call…' %>
+        <%= f.rich_text_area :content, placeholder: t(".take_notes") %>
       </div>
 
       <div class="mt-2 d-flex justify-content-between align-items-center">
-        <%= f.submit 'Add this comment', class: 'btn btn-primary' %>
-        <em class="ml-2">Other <%= Current.account.name %> users will be able to see this comment.</em>
+        <%= f.submit t(".add_this_comment"), class: 'btn btn-primary' %>
+        <em class="ml-2"><%= t(".other_users", user: Current.account.name) %></em>
       </div>
     <% end %>
 
@@ -101,7 +101,7 @@
           </div>
 
           <div class="contact-event__actions mt-1 hidden">
-            <%= link_to 'Show', event, class: 'btn btn-sm btn-warning' %>
+            <%= link_to t(".show"), event, class: 'btn btn-sm btn-warning' %>
           </div>
         </section>
       <% end %>
