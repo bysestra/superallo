@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+
+  contacts:
+    index:
+      reset_search: "Reset search"
+      add_contact: "Add Contact"
+      name: "Name"
+      follow_up: "Follow Up"
+      last_call: "Last call"
