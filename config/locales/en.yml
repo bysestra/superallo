@@ -47,6 +47,11 @@ en:
     show:
       download_recording: "Download recording"
 
+  comments:
+    take_notes: "Take notes during the call…"
+    add_this_comment: "Add this comment"
+    other_users: "Other <strong>%{user}</strong> users can see your comments."
+
   contacts:
     search:
       search_contacts: "Search contacts…"

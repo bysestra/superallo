@@ -3,14 +3,14 @@
   <%= f.hidden_field :commentable_id %>
 
   <div class="field">
-    <%= f.rich_text_area :content, placeholder: 'Take notes during the call…' %>
+    <%= f.rich_text_area :content, placeholder: t(".take_notes") %>
   </div>
 
   <div class="mt-2 d-flex flex-column">
-    <%= f.submit 'Add this comment', class: 'btn btn-primary' %>
+    <%= f.submit t(".add_this_comment"), class: 'btn btn-primary' %>
 
     <span class="mt-1">
-      <small>Other <strong><%= Current.account.name %></strong> users can see your comments.</small>
+      <small><%= raw t(".other_users", user: Current.account.name) %></small>
     </span>
   </div>
 <% end %>
