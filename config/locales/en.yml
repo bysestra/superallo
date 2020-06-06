@@ -43,6 +43,8 @@ en:
       duration: "Duration: %{time}"
       status: "Status: %{status}"
       recording: "Recording:"
+      initiated: "Initiated"
+      completed: "Completed"
     show:
       download_recording: "Download recording"
   comments:
@@ -332,3 +334,5 @@ en:
         company_name: "Company Name"
         phone_number: "Phone Number"
         email_address: "Email Address"
+      user:
+        email: Email Address
