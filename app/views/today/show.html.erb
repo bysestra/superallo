@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-12">
     <h2 class="d-flex align-items-center">
-      Today’s Follow-Ups
+      <%= t(".todays_follow_ups") %>
     </h2>
   </div>
 </div>
@@ -10,8 +10,8 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-        <th>Name</th>
-        <th style="width: 20%;">Last call</th>
+        <th><%= t(".name") %></th>
+        <th style="width: 20%;"><%= t(".last_call") %></th>
       </tr>
     </thead>
 
@@ -27,4 +27,3 @@
 
   <%= render "pagination" %>
 </div>
-

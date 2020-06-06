@@ -298,3 +298,8 @@ en:
       logout_second: "Logout"
       sign_up: "Sign Up"
       login: "Login"
+  today:
+    show:
+      todays_follow_ups: "Today’s Follow-Ups"
+      name: Name
+      last_call: Last call
