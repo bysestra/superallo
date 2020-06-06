@@ -171,10 +171,10 @@ en:
       all_you_get: "All you get is this text and a mostly barebones HTML document."
     privacy:
       privacy_policy: "Privacy Policy"
-      your_privacy: 'Your privacy is important to us. It is By Sestra s.r.o.'s policy
+      your_privacy: "Your privacy is important to us. It is By Sestra s.r.o.'s policy
         to respect your privacy regarding any information we may collect from you across
-        our website, <a href="http://getallowee.com">http://getallowee.com</a>, and
-        other sites we own and operate.'
+        our website, <a href=\"http://getallowee.com\">http://getallowee.com</a>, and
+        other sites we own and operate."
       we_only_ask: "We only ask for personal information when we truly need it
         to provide a service to you. We collect it by fair and lawful means,
         with your knowledge and consent. We also let you know why we’re collecting it and
