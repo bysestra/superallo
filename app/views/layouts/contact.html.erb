@@ -1,16 +1,16 @@
 <% content_for :content do %>
   <div class="row mb-5 align-items-center">
     <div class="col-sm-12 col-md-4">
-      <%= link_to 'All Contacts', contacts_path, class: 'btn btn-warning mr-2' %>
-      <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-primary' %>
+      <%= link_to t(".all_contacts"), contacts_path, class: 'btn btn-warning mr-2' %>
+      <%= link_to t(".edit"), edit_contact_path(@contact), class: 'btn btn-primary' %>
     </div>
 
     <div class="col-sm-12 col-md-8 mt-3 mt-md-1 d-flex justify-content-between align-items-center">
       <%= render_person_name @contact %>
 
       <div>
-        <%= link_to 'Call', contact_calls_path(@contact), class: 'btn btn-primary mr-2', method: :post, remote: :true %>
-        <%= link_to 'Comment', '#', class: 'btn btn-primary' %>
+        <%= link_to t(".call"), contact_calls_path(@contact), class: 'btn btn-primary mr-2', method: :post, remote: :true %>
+        <%= link_to t(".comment"), '#', class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
@@ -18,12 +18,12 @@
   <div class="row">
     <div class="col-sm-12 col-md-4">
       <dl class="dl-horizontal">
-        <%= term_description_tags 'First name', @contact.name.first %>
-        <%= term_description_tags 'Last name', @contact.name.last %>
-        <%= term_description_tags 'Title', @contact.title %>
-        <%= term_description_tags 'Company', @contact.company_name %>
-        <%= term_description_tags 'Phone number', @contact.phone_number %>
-        <%= term_description_tags 'Email', @contact.email_address %>
+        <%= term_description_tags t(".first_name"), @contact.name.first %>
+        <%= term_description_tags t(".last_name"), @contact.name.last %>
+        <%= term_description_tags t(".title"), @contact.title %>
+        <%= term_description_tags t(".company"), @contact.company_name %>
+        <%= term_description_tags t(".phone_number"), @contact.phone_number %>
+        <%= term_description_tags t(".email"), @contact.email_address %>
 
         <% @contact.properties.each do |name, value| %>
           <%= term_description_tags @contact.custom_fields.label_for(name: name), value %>
