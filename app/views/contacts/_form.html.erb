@@ -1,7 +1,7 @@
 <%= form_with(model: contact, local: true) do |form| %>
   <% if contact.errors.any? %>
     <div id="error_explanation">
-      <h2><%= t(".prohibited_this_contact", pluralize(contact.errors.count, "error")) %></h2>
+      <h2><%= t(".prohibited_this_contact", errors_count: pluralize(contact.errors.count, "error")) %></h2>
 
       <ul>
       <% contact.errors.full_messages.each do |message| %>
