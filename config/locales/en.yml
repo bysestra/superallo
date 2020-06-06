@@ -286,8 +286,15 @@ en:
   notifications:
     index:
       notifications: "Notifications"
-
   shared:
     footer:
       terms: "Terms"
       privacy: "Privacy"
+    navbar:
+      you_are_logged_in_as: "You're logged in as <b>%{name} (%{email})</b>"
+      logout_first: "Logout"
+      admin_area: "Admin Area"
+      profile: "Profile"
+      logout_second: "Logout"
+      sign_up: "Sign Up"
+      login: "Login"
