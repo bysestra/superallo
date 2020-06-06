@@ -283,6 +283,9 @@ en:
       company: "Company"
       phone_number: "Phone number"
       email: "Email"
+  notifications:
+    index:
+      notifications: "Notifications"
 
   shared:
     footer:
