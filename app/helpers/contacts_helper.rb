@@ -1,6 +1,6 @@
 module ContactsHelper
   def contacts_index_heading(params)
-    params.fetch(:q, false).presence ? "Results for “#{params[:q].html_safe}”" : 'All Contacts'
+    params.fetch(:q, false).presence ? t(".results_for", q: params[:q].html_safe) : t(".all_contacts")
   end
 
   def any_follow_ups_today?
@@ -9,7 +9,7 @@ module ContactsHelper
 
   def today_follow_ups_title(collection = Current.account.contacts.follow_up_today)
     count = if collection.size.zero?
-      "No"
+      t(".no_follow_ups")
     else
       collection.size
     end

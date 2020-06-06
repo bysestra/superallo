@@ -32,7 +32,6 @@
 en:
   hello: "Hello world"
 
-  # views
   announcements:
     index:
       whats_new: "What's New"
@@ -66,6 +65,8 @@ en:
       name: "Name"
       follow_up: "Follow Up"
       last_call: "Last call"
+      results_for: "Results for “%{q}”"
+      all_contacts: "All Contacts"
     new:
       new_contact: New Contact
     show-old:
@@ -83,6 +84,12 @@ en:
       save_this: "Save this"
       next_follow_up: "Next follow-up"
       pick_a_date: "Pick a date…"
+    create:
+      successfully: "Contact was successfully created."
+    update:
+      successfully: "Contact was successfully updated."
+    destroy:
+      successfully: "Contact was successfully destroyed."
   devise:
     confirmations:
       new:
@@ -288,6 +295,7 @@ en:
       terms: "Terms"
       privacy: "Privacy"
     navbar:
+      no_follow_ups: "No"
       you_are_logged_in_as: "You're logged in as <b>%{name} (%{email})</b>"
       logout_first: "Logout"
       admin_area: "Admin Area"
@@ -300,7 +308,6 @@ en:
       todays_follow_ups: "Today’s Follow-Ups"
       name: Name
       last_call: Last call
-  # controllers
   users:
     omniauth_callbacks:
       facebook:
@@ -315,10 +322,3 @@ en:
         connected: "Your %{kind} account was connected."
         already_exists: "An account with this email already exists.
           Please sign in with that account before connecting your %{provider} account."
-  contacts:
-    create:
-      successfully: "Contact was successfully created."
-    update:
-      successfully: "Contact was successfully updated."
-    destroy:
-      successfully: "Contact was successfully destroyed."
