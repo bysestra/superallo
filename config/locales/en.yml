@@ -86,6 +86,88 @@ en:
       next_follow_up: "Next follow-up"
       pick_a_date: "Pick a date…"
 
+  devise:
+    confirmations:
+      new:
+        resend_title: Resend confirmation instructions
+        resend_button: Resend confirmation instructions
+    mailer:
+      confirmation_instructions:
+        welcome: "Welcome %{email}!"
+        you_can_confirm: "You can confirm your account email through the link below:"
+        confirm: "Confirm my account"
+      password_change:
+        hello: "Hello %{email}!"
+        we_are_contacting_you: "We're contacting you to notify you that your password
+          has been changed."
+      reset_password_instructions:
+        hello: "Hello %{email}!"
+        someone_has_requested: "Someone has requested a link to change your password.
+          You can do this through the link below."
+        change_my_password: "Change my password"
+        if_you_didnt_request: "If you didn't request this, please ignore this email."
+        your_password: "Your password won't change until you access the link
+          above and create a new one."
+      unlock_instructions:
+        hello: "Hello %{email}!"
+        your_account: "Your account has been locked due to an excessive
+          number of unsuccessful sign in attempts."
+        click_the_link: "Click the link below to unlock your account:"
+        unlock: "Unlock my account"
+    passwords:
+      edit:
+        change_your_password: "Change your password"
+        password: "Password"
+        minimum_characters: "%{length} characters minimum"
+        confirm_password: "Confirm Password"
+        change_my_password: "Change my password"
+      new:
+        reset_your_password: "Reset your password"
+        enter_your_email: "Enter your email address below and we will send you
+          a link to reset your password."
+        email: "Email Address"
+        send: "Send password reset email"
+    registrations:
+      edit:
+        account: "Account"
+        full_name: "Full Name"
+        email: "Email Address"
+        waiting_confirmation: "Currently waiting confirmation for: %{email}"
+        password: "Password"
+        leave_password_blank: "Leave password blank if you don't want to change it"
+        confirm_password: "Confirm Password"
+        current_password: "Current Password"
+        we_need_your_password: "We need your current password to confirm your changes"
+        save_changes: "Save Changes"
+        deactivate_account: "Deactivate my account"
+        are_you_sure: "Are you sure? You cannot undo this."
+      new:
+        sing_up_title: "Sign Up"
+        full_name: "Full Name"
+        email: "Email Address"
+        password: "Password"
+        confirm_password: "Confirm Password"
+        sing_up_button: "Sign Up"
+    sessions:
+      new:
+        log_in_title: "Log in"
+        email: "Email Address"
+        password: "Password"
+        remember_me: "Remember me"
+        log_in_button: "Log in"
+    shared:
+      links:
+        log_in: "Log in"
+        sign_up: "Sign up"
+        forgot_password: "Forgot your password?"
+        didnt_receive_confirmation: "Didn't receive confirmation instructions?"
+        didnt_receive_unlock: "Didn't receive unlock instructions?"
+        sign_in_with_provider: "Sign in with %{provider}"
+    unlocks:
+      new:
+        resend_unlock_title: "Resend unlock instructions"
+        resend_unlock_button: "Resend unlock instructions"
+
   shared:
     footer:
       terms: "Terms"
