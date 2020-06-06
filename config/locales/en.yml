@@ -32,11 +32,11 @@
 en:
   hello: "Hello world"
 
+  # views
   announcements:
     index:
       whats_new: "What's New"
       exciting_stuff: "Exciting stuff coming very soon!"
-
   calls:
     calling:
       hangup: "Hangup"
@@ -46,12 +46,10 @@ en:
       recording: "Recording:"
     show:
       download_recording: "Download recording"
-
   comments:
     take_notes: "Take notes during the call…"
     add_this_comment: "Add this comment"
     other_users: "Other <strong>%{user}</strong> users can see your comments."
-
   contacts:
     form:
       prohibited_this_contact: "%{errors_count} prohibited this contact from being saved:"
@@ -85,7 +83,6 @@ en:
       save_this: "Save this"
       next_follow_up: "Next follow-up"
       pick_a_date: "Pick a date…"
-
   devise:
     confirmations:
       new:
@@ -303,3 +300,25 @@ en:
       todays_follow_ups: "Today’s Follow-Ups"
       name: Name
       last_call: Last call
+  # controllers
+  users:
+    omniauth_callbacks:
+      facebook:
+        connected: "Your %{kind} account was connected."
+        already_exists: "An account with this email already exists.
+          Please sign in with that account before connecting your %{provider} account."
+      twitter:
+        connected: "Your %{kind} account was connected."
+        already_exists: "An account with this email already exists.
+          Please sign in with that account before connecting your %{provider} account."
+      github:
+        connected: "Your %{kind} account was connected."
+        already_exists: "An account with this email already exists.
+          Please sign in with that account before connecting your %{provider} account."
+  contacts:
+    create:
+      successfully: "Contact was successfully created."
+    update:
+      successfully: "Contact was successfully updated."
+    destroy:
+      successfully: "Contact was successfully destroyed."
