@@ -6,8 +6,8 @@ module CallsHelper
 
   def event_to_sentence(event)
     string = case event
-      when Call then "#{event_creator_name(event)} <strong>called</strong> #{event.callee.name.full}"
-      when Comment then "#{event_creator_name(event)} <strong>commented</strong> about #{event.commentable.name.full}"
+      when Call then t(".called", creator: event_creator_name(event), callee: event.callee.name.full)
+      when Comment then t(".commented", creator: event_creator_name(event), commentable: event.commentable.name.full)
       else ''
     end
 
@@ -15,7 +15,7 @@ module CallsHelper
   end
 
   def event_creator_name(event)
-    Current.user == event.creator ? "You" : event.creator.name.familiar
+    Current.user == event.creator ? t(".you") : event.creator.name.familiar
   end
 
   def follow_up_color(date)

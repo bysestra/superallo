@@ -83,10 +83,16 @@ en:
       add_this_comment: "Add this comment"
       other_users: "Other %{user} users will be able to see this comment."
       show: "Show"
+      called: "%{creator} <strong>called</strong> %{callee}"
+      commented: "%{creator} <strong>commented</strong> about %{commentable}"
+      you: "You"
     show:
       save_this: "Save this"
       next_follow_up: "Next follow-up"
       pick_a_date: "Pick a date…"
+      called: "%{creator} <strong>called</strong> %{callee}"
+      commented: "%{creator} <strong>commented</strong> about %{commentable}"
+      you: "You"
     create:
       successfully: "Contact was successfully created."
     update:
