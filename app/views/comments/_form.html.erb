@@ -10,7 +10,7 @@
     <%= f.submit t(".add_this_comment"), class: 'btn btn-primary' %>
 
     <span class="mt-1">
-      <small><%= raw t(".other_users", user: Current.account.name) %></small>
+      <small><%= raw t(".other_users", account: Current.account.name) %></small>
     </span>
   </div>
 <% end %>

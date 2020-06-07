@@ -51,7 +51,7 @@ en:
     form:
       take_notes: "Take notes during the call…"
       add_this_comment: "Add this comment"
-      other_users: "Other <strong>%{user}</strong> users can see your comments."
+      other_users: "Other <strong>%{account}</strong> users can see your comments."
   contacts:
     form:
       prohibited_this_contact: "%{errors_count} prohibited this contact from being saved:"
