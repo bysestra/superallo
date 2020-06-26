@@ -19,6 +19,7 @@ class AccountDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String,
+    locale: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -32,6 +33,7 @@ class AccountDashboard < Administrate::BaseDashboard
     custom_fields
     surveys
     users
+    locale
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -42,6 +44,7 @@ class AccountDashboard < Administrate::BaseDashboard
   created_at
   updated_at
   slug
+  locale
   surveys
   users
   ].freeze
@@ -52,6 +55,7 @@ class AccountDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   name
   slug
+  locale
   ].freeze
 
   # COLLECTION_FILTERS

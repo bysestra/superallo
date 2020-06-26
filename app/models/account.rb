@@ -13,4 +13,8 @@ class Account < ApplicationRecord
   def custom_fields_permitted_params
     custom_fields.map(&:permitted_param)
   end
+
+  def locale
+    super.presence || "en"
+  end
 end
