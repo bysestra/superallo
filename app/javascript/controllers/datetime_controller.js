@@ -1,4 +1,3 @@
-require("jquery-ui/themes/base/datepicker")
 require("jquery-ui/ui/widgets/datepicker")
 
 export default class extends ApplicationController {
